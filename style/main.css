@@ -1,0 +1,78 @@
+header {
+    background-color: #F8F9FA;
+    padding: 5px 0 5px 0;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    min-width: 360px;
+}
+
+.signForm,
+.regForm {
+    display: flex;
+    width: 360px;
+    height: 300px;
+    padding: 25px 35px 0 35px;
+    border: 1px solid #CED4DA;
+}
+
+.regForm {
+    height: 480px;
+}
+
+.signForm form,
+.regForm form {
+    width: 100%;
+}
+
+.signForm [type="submit"],
+.regForm [type="submit"] {
+    width: 100%;
+    margin-top: 30px;
+}
+thead .form-check {
+    margin-bottom: 0;
+}
+
+#usersTable {
+    display: block;
+    height: 600px;
+    overflow: auto;
+}
+#usersTable .status {
+    height: 15px;
+}
+#usersTable #statusBlock{
+    width: 21px;
+}
+
+#usersTable table td:nth-child(7) div {
+    display: flex;
+    justify-content: center;
+}
+#usersTable table td:nth-child(7){
+    vertical-align: middle;
+}
+#Blockimg, #Unblockimg, #Deleteimg {
+    height: 40px;
+}
+
+#Blockimg:hover, #Unblockimg:hover, #Deleteimg:hover {
+    opacity: 0.7;
+}
+#users .btn-group {
+    margin-bottom: 30px;
+}
+#message {
+    display: block;
+    width: 35rem;
+    height: 700px;
+    overflow-y:auto ;
+    overflow-x: hidden;
+}
