@@ -15,10 +15,10 @@ class Commentaries
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'commentariesID')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'commentariesID')]
     private $userID;
 
-    #[ORM\ManyToMany(targetEntity: Items::class, inversedBy: 'commentariesID')]
+    #[ORM\ManyToOne(targetEntity: Items::class, inversedBy: 'commentariesID')]
     private $itemID;
 
     #[ORM\Column(type: 'datetime')]

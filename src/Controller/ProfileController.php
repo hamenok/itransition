@@ -54,12 +54,26 @@ class ProfileController extends AbstractController
         {
             $image = $form->get('avatar')->getData();
             if ($image != null){
-                $fileName = $fileManagerService->imagePhotoUpload($image);
+                $fileName = $fileManagerService->imagePhotoUpload($image, 'user');
                 $user->setAvatar($fileName);
             } else {
                 $user->setAvatar($form->get('avatar_')->getData());
             }
-            //$doctrine->getManager()->flush();
+
+            if ($form->get('delete')->isClicked())
+            {
+                if ($user->getAvatar()!='no-avatar.png' && $user->getAvatar()!=null){
+                    $fileManagerService->imagePhotoRemove($user->getAvatar(), 'user');
+                    $user->setAvatar('no-avatar.png');
+                    $this->addFlash('photo.delete','Photo was deleted');
+                    return $this->redirectToRoute('profile.edit',['id'=>$id]);
+                } else {
+                    $this->addFlash('photo.not.delete','Photo not was deleted');
+                    return $this->redirectToRoute('profile.edit',['id'=>$id]);
+                }
+                
+            }
+
             $this->userRepository->setUpdateUser($user);
             return $this->redirectToRoute('profile',['id'=>$id]);
         }

@@ -245,6 +245,10 @@
         <source>ADD ITEMS</source>
         <target>ДОБАВИТЬ ЭЛЕМЕНТ</target>
       </trans-unit>
+      <trans-unit id="my1" resname="REMOVE PHOTO">
+        <source>REMOVE PHOTO</source>
+        <target>УДАЛИТЬ ФОТО</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

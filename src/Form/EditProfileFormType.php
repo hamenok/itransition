@@ -45,6 +45,9 @@ class EditProfileFormType extends AbstractType
             ->add('save', SubmitType::class, [
                 'label' => 'SAVE PROFILE'
             ])
+            ->add('delete', SubmitType::class, [
+                'label' => 'REMOVE PHOTO'
+            ])
         ;
     }
 

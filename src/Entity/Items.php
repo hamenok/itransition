@@ -24,7 +24,7 @@ class Items
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $imageItems;
 
-    #[ORM\ManyToMany(targetEntity: Commentaries::class, mappedBy: 'itemID')]
+    #[ORM\OneToMany(targetEntity: Commentaries::class, mappedBy: 'itemID')]
     private $commentariesID;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'item')]

@@ -11,7 +11,18 @@
         <div class="col p-4 d-flex flex-row ">
             <div class="col-md-8">
                 <div class="card-body">
-
+                    {% for message in app.flashes('photo.delete') %}
+                        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                            <strong>{{ message|trans }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                    {% for message in app.flashes('photo.not.delete') %}
+                        <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                            <strong>{{ message|trans }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
                     {{ form_start(editProfileForm) }}
                     {{ form_errors(editProfileForm) }}
                     <table class="table">
@@ -77,6 +88,7 @@
                         </tbody>
                     </table>
                     {{ form_widget(editProfileForm.save, {attr:{class:'btn btn-primary mt-4'}})}}
+                    {{ form_widget(editProfileForm.delete, {attr:{class:'btn btn-danger ms-3 mt-4'}})}}
                     {{ form_end(editProfileForm) }}
                 </div>
             </div>
