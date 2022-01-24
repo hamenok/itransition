@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users page{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1> Edit USER</h1>
+
+    User:
+    <h1>{{user.firstname}} | {{user.lastname}}</h1>
+
+    <form method="post">
+        <div class="mb-3">
+            <label for="editFirstName" class="form-label">First name:</label>
+            <input type="text" class="form-control" id="editFirstName" name="firstname" value="{{user.firstname}}">
+        </div>
+        <div class="mb-3">
+            <label for="editLastName" class="form-label">Last name:</label>
+            <input type="text" class="form-control" id="editLastName" name="lastname" value="{{user.lastname}}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+
+    <ul>
+        <li>Your controller at <code><a href="{{ 'E:/_SOFT/OpenServer/domains/testsite/src/Controller/TwigsController.php'|file_link(0) }}">src/Controller/TwigsController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'E:/_SOFT/OpenServer/domains/testsite/templates/twigs/index.html.twig'|file_link(0) }}">templates/twigs/index.html.twig</a></code></li>
+    </ul>
+</div>
+{% endblock %}

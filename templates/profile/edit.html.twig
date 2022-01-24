@@ -1,0 +1,96 @@
+{% extends 'profile/index.html.twig' %}
+
+{% block title %}{% trans %}Edit Profile{% endtrans %}{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center">
+    <div class="card shadow-sm " style="width: 60rem;">
+        <div class="card-header">
+            <strong class="d-inline-block text-primary">{% trans %}USER{% endtrans %} #{{ user.id }}</strong>
+        </div>
+        <div class="col p-4 d-flex flex-row ">
+            <div class="col-md-8">
+                <div class="card-body">
+
+                    {{ form_start(editProfileForm) }}
+                    {{ form_errors(editProfileForm) }}
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td class="align-bottom">
+                                    {{ form_label(editProfileForm.firstname)}}
+                                </td>
+                                <th scope="row">
+                                    {{ form_errors(editProfileForm.firstname) }}
+                                    {{ form_widget(editProfileForm.firstname,{attr:{class:'form-control'}}) }}
+                                 </th>
+                            </tr>
+                            <tr>
+                                <td class="align-bottom">
+                                    {{ form_label(editProfileForm.lastname, 'LAST NAME', {'label_attr': {'class': 'form-label'}})}}
+                                </td>
+                                <th scope="row">
+                                    {{ form_errors(editProfileForm.lastname) }}
+                                    {{ form_widget(editProfileForm.lastname,{attr:{class:'form-control'}}) }}
+                                 </th>
+                            </tr>
+                            <tr>
+                                <td class="align-bottom">
+                                    {{ form_label(editProfileForm.phone, 'PHONE', {'label_attr': {'class': 'form-label'}})}}
+                                </td>
+                                <th scope="row">
+                                    {{ form_errors(editProfileForm.phone) }}
+                                    {{ form_widget(editProfileForm.phone,{attr:{class:'form-control'}}) }}
+                                 </th>
+                            </tr>
+                            <tr>
+                                <td class="align-bottom">
+                                    {{ form_label(editProfileForm.email, 'EMAIL', {'label_attr': {'class': 'form-label'}})}}
+                                </td>
+                                <th scope="row">
+                                    {{ form_errors(editProfileForm.email) }}
+                                    {{ form_widget(editProfileForm.email,{attr:{class:'form-control'}}) }}
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <td>{% trans %}REGISTER DATE{% endtrans %}</td>
+                                <th scope="row">{{ app.user.registerdate|date('Y-m-d H:m:s') }}</th>
+                            </tr>
+                            <tr>
+                                <td>{% trans %}ROLE{% endtrans %}</td>
+                                <th scope="row">
+                                    {% for role in app.user.roles %}
+                                        {{ role }},
+                                    {% endfor %}
+                                </th>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">
+                                    {% trans %} PHOTO {% endtrans %}
+                                </td>
+                                <th scope="row">
+                                    {{ form_errors(editProfileForm.avatar) }}
+                                    {{ form_widget(editProfileForm.avatar,{attr:{class:'form-control'}}) }}
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    {{ form_widget(editProfileForm.save, {attr:{class:'btn btn-primary mt-4'}})}}
+                    {{ form_end(editProfileForm) }}
+                </div>
+            </div>
+            <div class="col-md-4">
+                {% if (app.user.avatar) %}
+                    <img src="{{ asset('images/users/') }}{{ app.user.avatar }}" class="img-fluid rounded-end"
+                        alt="USER PHOTO">
+                {% else %}
+                    <img src="{{ asset('images/users/no-avatar.png') }}" class="img-fluid rounded-end"
+                        alt="PHOTO NOT FOUND">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

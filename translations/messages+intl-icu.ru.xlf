@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="e8ajuMI" resname="This friendly message is coming from:">
+        <source>This friendly message is coming from:</source>
+        <target>Это дружественное сообщение:</target>
+      </trans-unit>
+      <trans-unit id="zI.Z63_" resname="Welcome!">
+        <source>Welcome!</source>
+        <target>Добро пожаловать!</target>
+      </trans-unit>
+      <trans-unit id="NuZcOfg" resname="HOME">
+        <source>HOME</source>
+        <target>Главная</target>
+      </trans-unit>
+      <trans-unit id="HCDOFh8" resname="My Collection">
+        <source>My Collection</source>
+        <target>Моя коллекция</target>
+      </trans-unit>
+      <trans-unit id="N3s3Wtz" resname="LOGOUT">
+        <source>LOGOUT</source>
+        <target>Выйти</target>
+      </trans-unit>
+      <trans-unit id="x5Pg2aH" resname="Registration">
+        <source>Registration</source>
+        <target>Регистрация</target>
+      </trans-unit>
+      <trans-unit id="v9QCsvb" resname="Sign in">
+        <source>Sign in</source>
+        <target>Войти</target>
+      </trans-unit>
+      <trans-unit id="ScJmuqq" resname="Search">
+        <source>Search</source>
+        <target>Найти</target>
+      </trans-unit>
+      <trans-unit id="r47DhhL" resname="Profile page">
+        <source>Profile page</source>
+        <target>Профиль пользователя</target>
+      </trans-unit>
+      <trans-unit id="kre0IZk" resname="USER">
+        <source>USER</source>
+        <target>ПОЛЬЗОВАТЕЛЬ</target>
+      </trans-unit>
+      <trans-unit id="J9iM8Zp" resname="FIRST NAME">
+        <source>FIRST NAME</source>
+        <target>ИМЯ</target>
+      </trans-unit>
+      <trans-unit id="24Q0rOg" resname="LAST NAME">
+        <source>LAST NAME</source>
+        <target>ФАМИЛИЯ</target>
+      </trans-unit>
+      <trans-unit id="JEYVPMp" resname="PHONE">
+        <source>PHONE</source>
+        <target>ТЕЛЕФОН</target>
+      </trans-unit>
+      <trans-unit id="ctkK85P" resname="EMAIL">
+        <source>EMAIL</source>
+        <target>ПОЧТА</target>
+      </trans-unit>
+      <trans-unit id="UurLey6" resname="REGISTER DATE">
+        <source>REGISTER DATE</source>
+        <target>ДАТА РЕГИСТРАЦИИ</target>
+      </trans-unit>
+      <trans-unit id="aIeD9fC" resname="ROLE">
+        <source>ROLE</source>
+        <target>ПРАВА</target>
+      </trans-unit>
+      <trans-unit id="HB6ir6M" resname="EDIT PROFILE">
+        <source>EDIT PROFILE</source>
+        <target>РЕДАКТИРОВАТЬ</target>
+      </trans-unit>
+      <trans-unit id="vfIVPiJ" resname="USER PHOTO">
+        <source>USER PHOTO</source>
+        <target>ФОТО ПОЛЬЗОВАТЕЛЯ</target>
+      </trans-unit>
+      <trans-unit id="uHaRup0" resname="PHOTO NOT FOUND">
+        <source>PHOTO NOT FOUND</source>
+        <target>ФОТО НЕ НАЙДЕНО</target>
+      </trans-unit>
+      <trans-unit id="GDUUA0t" resname="PHOTO">
+        <source>PHOTO</source>
+        <target>ФОТО</target>
+      </trans-unit>
+      <trans-unit id="6NdxhDs" resname="SAVE PROFILE">
+        <source>SAVE PROFILE</source>
+        <target>СОХРАНИТЬ ПРОФИЛЬ</target>
+      </trans-unit>
+      <trans-unit id="mRv6AVU" resname="My Profile">
+        <source>My Profile</source>
+        <target>Мой Профиль</target>
+      </trans-unit>
+      <trans-unit id="1pajW90" resname="Profile">
+        <source>Profile</source>
+        <target>Мой профиль</target>
+      </trans-unit>
+      <trans-unit id="eL3MpOp" resname="VIEW PROFILE">
+        <source>VIEW PROFILE</source>
+        <target>СМОТРЕТЬ</target>
+      </trans-unit>
+      <trans-unit id="GQ4wdjm" resname="MY COLLECTIONS">
+        <source>MY COLLECTIONS</source>
+        <target>МОЯ КОЛЛЕКЦИЯ</target>
+      </trans-unit>
+      <trans-unit id="MNRk7MD" resname="MY COMMENTS">
+        <source>MY COMMENTS</source>
+        <target>МОИ КОММЕНТАРИИ</target>
+      </trans-unit>
+      <trans-unit id="ykRC2jP" resname="Main page">
+        <source>Main page</source>
+        <target>Главная</target>
+      </trans-unit>
+      <trans-unit id=".sKsD0z" resname="Edit Profile">
+        <source>Edit Profile</source>
+        <target>Редактировать профиль</target>
+      </trans-unit>
+      <trans-unit id="Y4ND.sf" resname="Admin panel">
+        <source>Admin panel</source>
+        <target>Админ панель</target>
+      </trans-unit>
+      <trans-unit id="u3I07BJ" resname="Register">
+        <source>Register</source>
+        <target>Регистрация</target>
+      </trans-unit>
+      <trans-unit id="lpzL089" resname="Email">
+        <source>Email</source>
+        <target>Почта</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Пароль</target>
+      </trans-unit>
+      <trans-unit id="Bd94KeE" resname="Сonfirm">
+        <source>Сonfirm</source>
+        <target>Подтверждаю</target>
+      </trans-unit>
+      <trans-unit id="nWMiwfT" resname="Login">
+        <source>Login</source>
+        <target>Авторизация</target>
+      </trans-unit>
+      <trans-unit id="acVpEs4" resname="You are logged in as">
+        <source>You are logged in as</source>
+        <target>Вы уже авторизованы как</target>
+      </trans-unit>
+      <trans-unit id="0FJ_Sz1" resname="Logout">
+        <source>Logout</source>
+        <target>Выйти</target>
+      </trans-unit>
+      <trans-unit id="_TJnqhH" resname="Remember me">
+        <source>Remember me</source>
+        <target>Запомнить меня</target>
+      </trans-unit>
+      <trans-unit id="UmOSWOR" resname="PROFILE">
+        <source>PROFILE</source>
+        <target>ПРОФИЛЬ</target>
+      </trans-unit>
+      <trans-unit id="KYgO0FL" resname="ITEMS">
+        <source>ITEMS</source>
+        <target>ЭЛЕМЕНТЫ</target>
+      </trans-unit>
+      <trans-unit id="dig_VYq" resname="MY ITEMS">
+        <source>MY ITEMS</source>
+        <target>МОИ ЭЛЕМЕНТЫ</target>
+      </trans-unit>
+      <trans-unit id="M981B_v" resname="CHANGE PASSWORD">
+        <source>CHANGE PASSWORD</source>
+        <target>ИЗМЕНИТЬ ПАРОЛЬ</target>
+      </trans-unit>
+      <trans-unit id="RAbgw3Z" resname="Change password page">
+        <source>Change password page</source>
+        <target>Страница изменения пароля</target>
+      </trans-unit>
+      <trans-unit id="P5yZH2O" resname="Change password">
+        <source>Change password</source>
+        <target>Изменить пароль</target>
+      </trans-unit>
+      <trans-unit id="WximlAZ" resname="Password again">
+        <source>Password again</source>
+        <target>Пароль повторно</target>
+      </trans-unit>
+      <trans-unit id="Ym_s1Y8" resname="I'm sure">
+        <source>I'm sure</source>
+        <target>Я уверен</target>
+      </trans-unit>
+      <trans-unit id="NXVyXNw" resname="Password changed">
+        <source>Password changed</source>
+        <target>Пароль изменён</target>
+      </trans-unit>
+      <trans-unit id="MSkES4." resname="Password not updated">
+        <source>Password not updated</source>
+        <target>Пароль не изменён</target>
+      </trans-unit>
+      <trans-unit id="U_Z_uFz" resname="USERS">
+        <source>USERS</source>
+        <target>ПОЛЬЗОВАТЕЛИ</target>
+      </trans-unit>
+      <trans-unit id="tRLZfny" resname="User">
+        <source>User</source>
+        <target>Пользователь</target>
+      </trans-unit>
+      <trans-unit id="_456Gjy" resname="Items">
+        <source>Items</source>
+        <target>Элементы</target>
+      </trans-unit>
+      <trans-unit id="BnkT8Qc" resname="Commentaries">
+        <source>Commentaries</source>
+        <target>Комментарии</target>
+      </trans-unit>
+      <trans-unit id="abHYvTq" resname="LAST ACTIVITY">
+        <source>LAST ACTIVITY</source>
+        <target>ПОСЛЕДНЯЯ АКТИВНОСТЬ</target>
+      </trans-unit>
+      <trans-unit id="Z9VkoT8" resname="DATA REGISTRATION">
+        <source>DATA REGISTRATION</source>
+        <target>ДАТА РЕГИСТРАЦИИ</target>
+      </trans-unit>
+      <trans-unit id="rH4kgTm" resname="ONLINE">
+        <source>ONLINE</source>
+        <target>В СЕТИ</target>
+      </trans-unit>
+      <trans-unit id="7.JvKcn" resname="USER AVATAR">
+        <source>USER AVATAR</source>
+        <target>ФОТО ПОЛЬЗОВАТЕЛЯ</target>
+      </trans-unit>
+      <trans-unit id="C_ZK6J3" resname="PASSWORD">
+        <source>PASSWORD</source>
+        <target>ПАРОЛЬ</target>
+      </trans-unit>
+      <trans-unit id="FHNqLrn" resname="Role">
+        <source>Role</source>
+        <target>Права</target>
+      </trans-unit>
+      <trans-unit id="Cye6h5T" resname="ROLE NAME">
+        <source>ROLE NAME</source>
+        <target>ПРАВИЛО</target>
+      </trans-unit>
+      <trans-unit id="nMNYQFF" resname="DESCRIPTION">
+        <source>DESCRIPTION</source>
+        <target>ОПИСАНИЕ</target>
+      </trans-unit>
+      <trans-unit id="hSVZIYJ" resname="ADD ITEMS">
+        <source>ADD ITEMS</source>
+        <target>ДОБАВИТЬ ЭЛЕМЕНТ</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

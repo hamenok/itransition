@@ -1,0 +1,65 @@
+{% extends 'profile/index.html.twig' %}
+
+{% block title %}{% trans %}Profile page{% endtrans %}{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-center">
+    <div class="card shadow-sm " style="width: 60rem;">
+        <div class="card-header">
+            <strong class="d-inline-block text-primary">{% trans %}USER{% endtrans %} #{{ user.id }}</strong>
+        </div>
+        <div class="col p-4 d-flex flex-row ">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>{% trans %}FIRST NAME{% endtrans %}</td>
+                                <th scope="row">{{ app.user.firstname }}</th>
+                            </tr>
+                            <tr>
+                                <td>{% trans %}LAST NAME{% endtrans %}</td>
+                                <th scope="row">{{ app.user.lastname }}</th>
+                            </tr>
+                            <tr>
+                                <td>{% trans %}PHONE{% endtrans %}</td>
+                                <th scope="row">{{ app.user.phone }}</th>
+                            </tr>
+                            <tr>
+                                <td>{% trans %}EMAIL{% endtrans %}</td>
+                                <th scope="row">{{ app.user.email }}</th>
+
+                            </tr>
+                            <tr>
+                                <td>{% trans %}REGISTER DATE{% endtrans %}</td>
+                                <th scope="row">{{ app.user.registerdate|date('Y-m-d H:m:s') }}</th>
+                            </tr>
+                            <tr>
+                                <td>{% trans %}ROLE{% endtrans %}</td>
+                                <th scope="row">
+                                    {% for role in app.user.roles %}
+                                        {{ role }},
+                                    {% endfor %}
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="{{ path('profile.edit', {id: app.user.id}) }}" class="btn btn-primary mt-4">{% trans %}EDIT PROFILE{% endtrans %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                {% if (app.user.avatar) %}
+                    <img src="{{ asset('images/users/') }}{{ app.user.avatar }}" class="img-fluid rounded-end"
+                        alt="{% trans %}USER PHOTO{% endtrans %}">
+                {% else %}
+                    <img src="{{ asset('images/users/no-avatar.png') }}" class="img-fluid rounded-end"
+                        alt="{% trans %}PHOTO NOT FOUND{% endtrans %}">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
