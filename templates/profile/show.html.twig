@@ -37,8 +37,12 @@
                             <tr>
                                 <td>{% trans %}ROLE{% endtrans %}</td>
                                 <th scope="row">
+                                {% set comma = "," %}
                                     {% for role in app.user.roles %}
-                                        {{ role }},
+                                        {{ role }} 
+                                        {% if loop.last != true %}
+                                            {{ comma }} 
+                                        {% endif %}
                                     {% endfor %}
                                 </th>
                             </tr>

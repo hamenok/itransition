@@ -12,11 +12,14 @@
         <div class="col p-4 d-flex flex-row ">
             <div class="col-md-12">
                 <div class="card-body">
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                            <strong>{{ message|trans }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
                     {{ form_start(addItemsForm) }}
-                    {{ form_errors(addItemsForm) }}
-                     
-
-
+                    {{ form_errors(addItemsForm) }}                   
                     <table class="table">
                         <tbody>
                             <tr>
@@ -34,8 +37,6 @@
                                 </td>
                                 <th scope="row">
                                     {{ form_errors(addItemsForm.tagItem) }}
-                                    
-
                                     <div class="js-tags-wrapper"
                                         data-prototype="<div class='itemTag d-flex align-items-center'>{{ form_widget(addItemsForm.tagItem.vars.prototype, {attr:{class:'form-control'}})|e('html_attr') }}
                                         <button type='button' class='btn-close' aria-label='Close'></button>
@@ -44,7 +45,7 @@
                                     >
                                         <a href="#" class="js-tags-add">
                                             <span class="fa fa-plus-circle"></span>
-                                            Add Another TAG
+                                           {% trans %}Add Another TAG{% endtrans %}
                                         </a>
                                     </div>
                                     {{ form_widget(addItemsForm.tagItem)}}
@@ -59,15 +60,12 @@
                                     {{ form_widget(addItemsForm.imageItems,{attr:{class:'form-control'}}) }}
                                  </th>
                             </tr>
-                            
                         </tbody>
                     </table>
                     {{ form_widget(addItemsForm.save, {attr:{class:'btn btn-primary mt-4'}})}}
-                  
                     {{ form_end(addItemsForm) }}
                 </div>
             </div>
-            
         </div>
     </div>
 </div>

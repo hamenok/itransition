@@ -3,11 +3,8 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\User;
-use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\UserRepository;
 use App\Form\EditProfileFormType;
 use App\Form\ChangePasswordFormType;
@@ -26,6 +23,7 @@ class ProfileController extends AbstractController
     #[Route('/{_locale<%app.supported_locales%>}/profile/{id}', name: 'profile')]
     public function viewProfile($id)
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $titlePage = 'VIEW PROFILE';
         $user = $this->userRepository->getOne($id);
 
@@ -38,6 +36,7 @@ class ProfileController extends AbstractController
     #[Route('/{_locale<%app.supported_locales%>}/profile/edit/{id}', name: 'profile.edit')]
     public function editProfile(Request $request, $id, FileManagerServiceInterface $fileManagerService)
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $user = $this->userRepository->getOne($id);
         $form = $this->createForm(EditProfileFormType::class, $user);
         $form->handleRequest($request);
@@ -79,6 +78,7 @@ class ProfileController extends AbstractController
     #[Route('/{_locale<%app.supported_locales%>}/profile/password/{id}', name: 'profile.password')]
     public function changePassword(Request $request, $id)
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $titlePage = 'CHANGE PASSWORD';
         $user = $this->userRepository->getOne($id);
         $form = $this->createForm(ChangePasswordFormType::class);
@@ -89,14 +89,13 @@ class ProfileController extends AbstractController
             $againPassword = $form->get('plainPasswordAgain')->getData();
             if ($newPassword == $againPassword){
                 $this->addFlash('success','Password changed');
-               // return $this->redirectToRoute('profile',['id'=>$id]);
-               $this->userRepository->upgradePassword($user, $newPassword);
+                $this->userRepository->upgradePassword($user, $newPassword);
             } else {
                 $this->addFlash('error','Password not updated');
             }
         }
 
-        return $this->render('profile/shangepassword.html.twig', [
+        return $this->render('profile/changepassword.html.twig', [
             'titlePage' => $titlePage,
             'changepasswordform' => $form->createView(),
         ]);

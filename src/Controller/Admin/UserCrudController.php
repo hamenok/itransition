@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use App\Entity\Role;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -16,6 +17,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 
 class UserCrudController extends AbstractCrudController
@@ -52,7 +54,10 @@ class UserCrudController extends AbstractCrudController
     public function configureFilters(Filters $filters): filters
     {
         return $filters
-        ->add('email');
+        ->add('email')
+        ->add('status', 'STATUS')
+        ->add('roles')
+        ->add('registerdate');
     }
     
     public function configureFields(string $pageName): iterable

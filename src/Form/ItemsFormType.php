@@ -32,8 +32,6 @@ class ItemsFormType extends AbstractType
             ->add('save', SubmitType::class, [
                 'label' => 'ADD ITEM'
             ])
-           // ->add('datecreateitem')
-           // ->add('author')
         ;
     }
 

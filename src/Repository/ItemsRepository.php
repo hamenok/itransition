@@ -20,6 +20,13 @@ class ItemsRepository extends ServiceEntityRepository
         parent::__construct($registry, Items::class);
     }
 
+    public function getAllMyItems(int $userID)
+    {
+        return parent::findBy(
+            ['author' => $userID]
+        );
+    }
+
     public function setUpdateItem(Items $item): object
     {
         $this->_em->flush();
@@ -34,6 +41,8 @@ class ItemsRepository extends ServiceEntityRepository
         $this->_em->flush();
         return $item;
     }
+
+
     // /**
     //  * @return Items[] Returns an array of Items objects
     //  */

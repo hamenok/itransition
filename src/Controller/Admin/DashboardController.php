@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Entity\Role;
 use App\Entity\Items;
+use App\Entity\Category;
 use App\Entity\Commentaries;
 
 class DashboardController extends AbstractDashboardController
@@ -19,6 +20,7 @@ class DashboardController extends AbstractDashboardController
     #[Route('/{_locale<%app.supported_locales%>}/admin', name: 'admin')]
     public function index(): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
        // return parent::index();
 
         // Option 1. You can make your dashboard redirect to some common page of your backend
@@ -44,13 +46,13 @@ class DashboardController extends AbstractDashboardController
         // the name visible to end users
         ->setTitle('ADMIN PANEL')
         // you can include HTML contents too (e.g. to link to an image)
-        ->setTitle('<img src=""  <span class="text-small">ADMIN PANEL</span>')
+       
 
      
 
         // there's no need to define the "text direction" explicitly because
         // its default value is inferred dynamically from the user locale
-        ->setTextDirection('ltr')
+     
 
         // set this option if you prefer the page content to span the entire
         // browser width, instead of the default design which sets a max width
@@ -83,7 +85,11 @@ class DashboardController extends AbstractDashboardController
 
             MenuItem::section('ITEMS'),
                 MenuItem::linkToCrud('Items', 'fa fa-tags', Items::class),
-                MenuItem::linkToCrud('Commentaries', 'fa fa-commenting-o', Commentaries::class)
+                MenuItem::linkToCrud('Commentaries', 'fa fa-commenting-o', Commentaries::class),
+
+            MenuItem::section('COLLECTIONS'),
+                MenuItem::linkToCrud('Category','fa fa-bookmark', Category::class)
+
         ];
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
@@ -96,6 +102,8 @@ class DashboardController extends AbstractDashboardController
             $ava = '';
         }
         return parent::configureUserMenu($user)
-            ->setAvatarUrl($ava);
+            ->setAvatarUrl($ava)
+            ->setName($this->getUser()->getEmail());
     }
+    
 }

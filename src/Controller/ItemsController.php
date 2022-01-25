@@ -26,16 +26,22 @@ class ItemsController extends AbstractController
     #[Route('/{_locale<%app.supported_locales%>}/items', name: 'items')]
     public function index(): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        $user = $this->getUser();
+        
+        $items = $this->itemRepository->getAllMyItems($user->getId());
         $titlePage = 'MY ITEMS';
         return $this->render('items/index.html.twig', [
             'controller_name' => 'ItemsController',
             'titlePage'=>$titlePage,
+            'items'=>$items
         ]);
     }
 
     #[Route('/{_locale<%app.supported_locales%>}/items/add/{userID}', name: 'items.add')]
     public function addItem(Request $request, FileManagerServiceInterface $fileManagerService, $userID): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $user = $this->userRepository->getOne($userID);
         $item = new Items();
         $form = $this->createForm(ItemsFormType::class, $item);
@@ -63,9 +69,9 @@ class ItemsController extends AbstractController
             //         return $this->redirectToRoute('profile.edit',['id'=>$id]);
             //     }
             // }
-
+            $this->addFlash('success','Item added');
             $this->itemRepository->setCreateItem($item,$user);
-            return $this->redirectToRoute('items');
+            return $this->redirectToRoute('items.add',['userID'=>$userID]);
         }
 
 
@@ -74,6 +80,21 @@ class ItemsController extends AbstractController
             'controller_name' => 'ItemsController',
             'titlePage'=>$titlePage,
             'addItemsForm' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/{_locale<%app.supported_locales%>}/items/item/{itemid}', name: 'item.view')]
+    public function viewItem($itemid): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        $user = $this->getUser();
+        
+        $items = $this->itemRepository->getAllMyItems($user->getId());
+        $titlePage = 'MY ITEMS';
+        return $this->render('items/index.html.twig', [
+            'controller_name' => 'ItemsController',
+            'titlePage'=>$titlePage,
+            'items'=>$items
         ]);
     }
 }

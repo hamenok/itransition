@@ -15,75 +15,23 @@ class Commentaries
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'commentariesID')]
-    private $userID;
-
-    #[ORM\ManyToOne(targetEntity: Items::class, inversedBy: 'commentariesID')]
-    private $itemID;
-
     #[ORM\Column(type: 'datetime')]
     private $datecomment;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $message;
 
-    public function __construct()
-    {
-        $this->userID = new ArrayCollection();
-        $this->itemID = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'commentID')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $userID;
+
+    #[ORM\ManyToOne(targetEntity: Items::class, inversedBy: 'commentID')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $itemID;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    /**
-     * @return Collection|User[]
-     */
-    public function getUserID(): Collection
-    {
-        return $this->userID;
-    }
-
-    public function addUserID(User $userID): self
-    {
-        if (!$this->userID->contains($userID)) {
-            $this->userID[] = $userID;
-        }
-
-        return $this;
-    }
-
-    public function removeUserID(User $userID): self
-    {
-        $this->userID->removeElement($userID);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Items[]
-     */
-    public function getItemID(): Collection
-    {
-        return $this->itemID;
-    }
-
-    public function addItemID(Items $itemID): self
-    {
-        if (!$this->itemID->contains($itemID)) {
-            $this->itemID[] = $itemID;
-        }
-
-        return $this;
-    }
-
-    public function removeItemID(Items $itemID): self
-    {
-        $this->itemID->removeElement($itemID);
-
-        return $this;
     }
 
     public function getDatecomment(): ?\DateTimeInterface
@@ -106,6 +54,30 @@ class Commentaries
     public function setMessage(string $message): self
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function getUserID(): ?User
+    {
+        return $this->userID;
+    }
+
+    public function setUserID(?User $userID): self
+    {
+        $this->userID = $userID;
+
+        return $this;
+    }
+
+    public function getItemID(): ?Items
+    {
+        return $this->itemID;
+    }
+
+    public function setItemID(?Items $itemID): self
+    {
+        $this->itemID = $itemID;
 
         return $this;
     }

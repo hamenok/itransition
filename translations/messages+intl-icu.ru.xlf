@@ -253,22 +253,98 @@
         <source>NEW ITEM</source>
         <target>НОВЫЙ ЭЛЕМЕНТ</target>
       </trans-unit>
-      <trans-unit id="my1" resname="TITLE">
+      <trans-unit id="XRBrHtQ" resname="TITLE">
         <source>TITLE</source>
         <target>НАЗВАНИЕ</target>
       </trans-unit>
-      <trans-unit id="my2" resname="TAGS">
+      <trans-unit id="dU8rmUX" resname="TAGS">
         <source>TAGS</source>
         <target>ТЕГИ</target>
       </trans-unit>
-      <trans-unit id="my3" resname="IMAGE">
+      <trans-unit id="azz1fHs" resname="IMAGE">
         <source>IMAGE</source>
         <target>ИЗОБРАЖЕНИЕ</target>
       </trans-unit>
-      <trans-unit id="my4" resname="ADD ITEM">
+      <trans-unit id="es2i6nX" resname="ADD ITEM">
         <source>ADD ITEM</source>
         <target>ДОБАВИТЬ ЭЛЕМЕНТ</target>
       </trans-unit>
-    </body>
+      <trans-unit id="NT6nHww" resname="Item added">
+        <source>Item added</source>
+        <target>Элемент добавлен</target>
+      </trans-unit>
+      <trans-unit id="AKhrOHC" resname="Add Another TAG">
+        <source>Add Another TAG</source>
+        <target>Добавить еще один тег</target>
+      </trans-unit>
+      <trans-unit id="OEOXHc." resname="ID">
+        <source>ID</source>
+        <target>#</target>
+      </trans-unit>
+      <trans-unit id="dRGIg2X" resname="Name Item">
+        <source>Name Item</source>
+        <target>Название элемента</target>
+      </trans-unit>
+      <trans-unit id="oUvA3E3" resname="Tag Item">
+        <source>Tag Item</source>
+        <target>Теги</target>
+      </trans-unit>
+      <trans-unit id="IH3xU7h" resname="Image Items">
+        <source>Image Items</source>
+        <target>Изображение элемента</target>
+      </trans-unit>
+      <trans-unit id="eMgi_jp" resname="Datecreateitem">
+        <source>Datecreateitem</source>
+        <target>Дата создания элемента</target>
+      </trans-unit>
+      <trans-unit id="kOFr3hG" resname="ADMIN PANEL">
+        <source>ADMIN PANEL</source>
+        <target>АДМИН ПАНЕЛЬ</target>
+      </trans-unit>
+      <trans-unit id="KLrrw9E" resname="VIEW">
+        <source>VIEW</source>
+        <target>Посмотреть</target>
+      </trans-unit>
+      <trans-unit id="my1" resname="Category">
+        <source>Category</source>
+        <target>Категории</target>
+      </trans-unit>
+      <trans-unit id="my2" resname="Title">
+        <source>Title</source>
+        <target>Наименование</target>
+      </trans-unit>
+      <trans-unit id="my3" resname="COLLECTIONS">
+        <source>COLLECTIONS</source>
+        <target>КОЛЛЕКЦИИ</target>
+      </trans-unit>
+      <trans-unit id="my4" resname="Status">
+        <source>Status</source>
+        <target>В сети</target>
+      </trans-unit>
+      <trans-unit id="my5" resname="Roles">
+        <source>Roles</source>
+        <target>Права</target>
+      </trans-unit>
+      <trans-unit id="my6" resname="Registerdate">
+        <source>Registerdate</source>
+        <target>Дата регистрации</target>
+      </trans-unit>
+      <trans-unit id="my7" resname="NameItem">
+        <source>NameItem</source>
+        <target>Наименование</target>
+      </trans-unit>
+      <trans-unit id="my8" resname="TagItem">
+        <source>TagItem</source>
+        <target>Теги</target>
+      </trans-unit>
+      <trans-unit id="my9" resname="AUTHOR">
+        <source>AUTHOR</source>
+        <target>СОЗДАТЕЛЬ</target>
+      </trans-unit>
+      <trans-unit id="my10" resname="ITEM IMAGE">
+        <source>ITEM IMAGE</source>
+        <target>ИЗОБРАЖЕНИЕ ЭЛЕМЕНТА</target>
+      </trans-unit>
+      </body>
   </file>
 </xliff>

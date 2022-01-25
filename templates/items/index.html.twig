@@ -1,14 +1,32 @@
 {% extends 'profile/index.html.twig' %}
 
-{% block title %}{% trans %}Edit Profile{% endtrans %}{% endblock %}
+{% block title %}{% trans %}MY ITEMS{% endtrans %}{% endblock %}
 
 {% block content %}
-<div class="card" style="width: 16rem;">
-  <img src="..." class="card-img-top" alt="...">
+<div class="row">
+{% for item in items %}
+<div class="card ms-2" style="width: 14rem;">
+  <img src="{{ asset('images/items/') }}{{ item.imageItems }}" class="card-img-top mt-2" alt="...">
   <div class="card-body">
-    <h5 class="card-title">Название карточки</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h5 class="card-title">{{ item.nameItem }}</h5>
+    <p class="card-text">
+        {% set comma = "," %}
+        {% for tag in item.tagItem %}
+            {% if tag != null %}
+            {{ tag }}
+                {% if loop.last != true %}
+                    {{ comma }} 
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </p>
   </div>
+  <a href="{{ path('item.view', {itemid: item.id}) }}" class="btn btn-primary mb-2">{% trans %}VIEW{% endtrans %}</a>
 </div>
+{% endfor %}
+</div>
+
+
+
+
 {% endblock %}

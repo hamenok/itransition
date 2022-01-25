@@ -50,9 +50,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'author', targetEntity: Items::class)]
     private $item;
 
+    #[ORM\OneToMany(mappedBy: 'userID', targetEntity: Commentaries::class)]
+    private $commentID;
+
+    #[ORM\OneToMany(mappedBy: 'userID', targetEntity: LikeItem::class)]
+    private $likeItems;
+
+    public function __toString() {
+        return $this->id;
+    }
+
     public function __construct()
     {
         $this->item = new ArrayCollection();
+        $this->commentID = new ArrayCollection();
+        $this->likeItems = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -233,6 +245,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($item->getAuthor() === $this) {
                 $item->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Commentaries[]
+     */
+    public function getCommentID(): Collection
+    {
+        return $this->commentID;
+    }
+
+    public function addCommentID(Commentaries $commentID): self
+    {
+        if (!$this->commentID->contains($commentID)) {
+            $this->commentID[] = $commentID;
+            $commentID->setUserID($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentID(Commentaries $commentID): self
+    {
+        if ($this->commentID->removeElement($commentID)) {
+            // set the owning side to null (unless already changed)
+            if ($commentID->getUserID() === $this) {
+                $commentID->setUserID(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LikeItem[]
+     */
+    public function getLikeItems(): Collection
+    {
+        return $this->likeItems;
+    }
+
+    public function addLikeItem(LikeItem $likeItem): self
+    {
+        if (!$this->likeItems->contains($likeItem)) {
+            $this->likeItems[] = $likeItem;
+            $likeItem->setUserID($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLikeItem(LikeItem $likeItem): self
+    {
+        if ($this->likeItems->removeElement($likeItem)) {
+            // set the owning side to null (unless already changed)
+            if ($likeItem->getUserID() === $this) {
+                $likeItem->setUserID(null);
             }
         }
 
