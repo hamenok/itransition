@@ -1,0 +1,74 @@
+{% extends 'profile/index.html.twig' %}
+
+{% block title %}{{titlePage|trans}}{% endblock %}
+
+
+{% block content %}
+<div class="d-flex justify-content-center">
+    <div class="card shadow-sm " style="width: 40rem;">
+        <div class="card-header">
+            <strong class="d-inline-block text-primary">{% trans %}NEW ITEM{% endtrans %}</strong>
+        </div>
+        <div class="col p-4 d-flex flex-row ">
+            <div class="col-md-12">
+                <div class="card-body">
+                    {{ form_start(addItemsForm) }}
+                    {{ form_errors(addItemsForm) }}
+                     
+
+
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td class="align-bottom">
+                                    {{ form_label(addItemsForm.nameItem, 'TITLE', {'label_attr': {'class': 'form-label'}})}}
+                                </td>
+                                <th scope="row">
+                                    {{ form_errors(addItemsForm.nameItem) }}
+                                    {{ form_widget(addItemsForm.nameItem,{attr:{class:'form-control'}}) }}
+                                 </th>
+                            </tr>
+                            <tr>
+                                <td class="align-bottom">
+                                    {{ form_label(addItemsForm.tagItem, 'TAGS', {'label_attr': {'class': 'form-label'}})}}
+                                </td>
+                                <th scope="row">
+                                    {{ form_errors(addItemsForm.tagItem) }}
+                                    
+
+                                    <div class="js-tags-wrapper"
+                                        data-prototype="<div class='itemTag d-flex align-items-center'>{{ form_widget(addItemsForm.tagItem.vars.prototype, {attr:{class:'form-control'}})|e('html_attr') }}
+                                        <button type='button' class='btn-close' aria-label='Close'></button>
+                                        <div>"
+                                        data-index="{{ addItemsForm.tagItem|length }}"
+                                    >
+                                        <a href="#" class="js-tags-add">
+                                            <span class="fa fa-plus-circle"></span>
+                                            Add Another TAG
+                                        </a>
+                                    </div>
+                                    {{ form_widget(addItemsForm.tagItem)}}
+                                 </th>
+                            </tr>
+                            <tr>
+                                <td class="align-bottom">
+                                    {{ form_label(addItemsForm.imageItems, 'IMAGE', {'label_attr': {'class': 'form-label'}})}}
+                                </td>
+                                <th scope="row">
+                                    {{ form_errors(addItemsForm.imageItems) }}
+                                    {{ form_widget(addItemsForm.imageItems,{attr:{class:'form-control'}}) }}
+                                 </th>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                    {{ form_widget(addItemsForm.save, {attr:{class:'btn btn-primary mt-4'}})}}
+                  
+                    {{ form_end(addItemsForm) }}
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

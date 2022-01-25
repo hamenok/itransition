@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Items;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -19,6 +20,20 @@ class ItemsRepository extends ServiceEntityRepository
         parent::__construct($registry, Items::class);
     }
 
+    public function setUpdateItem(Items $item): object
+    {
+        $this->_em->flush();
+        return $item;
+    }
+
+    public function setCreateItem(Items $item, User $user): object
+    {
+        $item->setAuthor($user);
+        $item->setDatecreateitem(date_timezone_set(new \DateTime(), new \DateTimeZone('+3UTC')));
+        $this->_em->persist($item);
+        $this->_em->flush();
+        return $item;
+    }
     // /**
     //  * @return Items[] Returns an array of Items objects
     //  */

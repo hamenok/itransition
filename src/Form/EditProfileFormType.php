@@ -18,10 +18,6 @@ class EditProfileFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class)
-            // ->add('roles')
-            // ->add('password', PasswordType::class, [
-            //     'label' => ''
-            // ])
             ->add('firstname', null, [
                 'label'=>'FIRST NAME',
                 'label_attr'=>['class'=>'form-label']
@@ -30,9 +26,6 @@ class EditProfileFormType extends AbstractType
             ->add('phone', TelType::class, [
                 'required' => false
             ])
-            // ->add('registerdate')
-            // ->add('status')
-            // ->add('lastactivity')
             ->add('avatar', FileType::class, [ 
                 'data_class' => null,
                 'required' => false

@@ -24,7 +24,7 @@ class ProfileController extends AbstractController
     }
 
     #[Route('/{_locale<%app.supported_locales%>}/profile/{id}', name: 'profile')]
-    public function viewProfile(ManagerRegistry $doctrine, $id)
+    public function viewProfile($id)
     {
         $titlePage = 'VIEW PROFILE';
         $user = $this->userRepository->getOne($id);
@@ -36,18 +36,9 @@ class ProfileController extends AbstractController
     }
 
     #[Route('/{_locale<%app.supported_locales%>}/profile/edit/{id}', name: 'profile.edit')]
-    public function editProfile( ManagerRegistry $doctrine, Request $request, $id, FileManagerServiceInterface $fileManagerService)
+    public function editProfile(Request $request, $id, FileManagerServiceInterface $fileManagerService)
     {
-
         $user = $this->userRepository->getOne($id);
-   
-       /* $user->setFirstname($request->get('firstname'));
-        $user->setLastname($request->get('lastname'));
-        $doctrine->getManager()->flush();
-
-
-        $user = new User();
-        */
         $form = $this->createForm(EditProfileFormType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) 
@@ -71,7 +62,6 @@ class ProfileController extends AbstractController
                     $this->addFlash('photo.not.delete','Photo not was deleted');
                     return $this->redirectToRoute('profile.edit',['id'=>$id]);
                 }
-                
             }
 
             $this->userRepository->setUpdateUser($user);
@@ -104,16 +94,11 @@ class ProfileController extends AbstractController
             } else {
                 $this->addFlash('error','Password not updated');
             }
-            //$doctrine->getManager()->flush();
-            //$this->userRepository->setUpdateUser($user);
-            
         }
-       // $this->userRepository->upgradePassword($user, '321321321');
-        //$this->userRepository->setUpdateUser($user);
+
         return $this->render('profile/shangepassword.html.twig', [
             'titlePage' => $titlePage,
             'changepasswordform' => $form->createView(),
-
         ]);
     }
 

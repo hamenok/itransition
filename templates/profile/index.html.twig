@@ -3,6 +3,7 @@
 {% block title %}{% trans %}Profile{% endtrans %}{% endblock %}
 
 
+
 {% block body %}
 <link rel="stylesheet" href="{{ asset('assets/main/css/main.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/framework/bootstrap-5.1.3/css/bootstrap.min.css') }}">
@@ -52,7 +53,7 @@
                         <span>{% trans %}ITEMS{% endtrans %}</span>
                     </h6>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ path('items', {id: app.user.id}) }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
                                 stroke-linejoin="round" class="feather feather-tag">
@@ -63,7 +64,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ path('items.add', {userID: app.user.id}) }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
