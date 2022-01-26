@@ -7,3 +7,8 @@
 .testBLOCK2 {
     width:1000px;
 }
+.vcenter {
+    display: inline-block;
+    float: none;
+    vertical-align: middle;
+  }

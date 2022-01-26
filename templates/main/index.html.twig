@@ -4,46 +4,65 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .example-wrapper {
+        margin: 1em auto;
+        max-width: 810px;
+        width: 95%;
+    }
+
+    .example-wrapper code {
+        background: #F5F5F5;
+        padding: 2px 6px;
+    }
 </style>
 
-<div class="example-wrapper">
-    <h1 class="mb-5">{% trans %}Last added Items{% endtrans %}</h1>
+<div class="container">
+    <h1 class="display-6 mt-3 mb-5 text-center">{% trans %}Last added Items{% endtrans %}</h1>
 
-<div class="d-flex">
-    {% for item in items %}
-    <div class="card mb-5 p-0 ms-3 shadow-sm" style="width: 11rem;">
-    <img src="{{ asset('images/items/') }}{{ item.imageItems }}" class="card-img-top h-50" alt="...">
-    <div class="card-body">
-        <p class="h5">{{ item.nameItem|length > 15 ? item.nameItem|slice(0, 15) ~ '...' : item.nameItem  }}</p>
-        <p class="h6">
-            {% set comma = "," %}
-            {% for tag in item.tagItem %}
-                {% if tag != null %}
-                {{ tag }}
-                    {% if loop.last != true %}
-                        {{ comma }} 
+    <div class="row align-items-md-stretch">
+        <div class="col-md-1 m-auto">
+            <nav>
+                <ul class="pagination">
+                    {% if previous >= 0 %}
+                    <li class="page-item"><a class="page-link"
+                            href="{{ path('home', {  offset: previous }) }}">{% trans %}Previous{% endtrans %}</a></li>
                     {% endif %}
-                {% endif %}
-            {% endfor %}
-        </p>
+                </ul>
+            </nav>
+        </div>
+        {% for item in items %}
+        <div class=" col-md-2 card mb-5 p-0 ms-4 shadow-sm" style="width: 14rem; min-width:163px">
+            <img src="{{ asset('images/items/') }}{{ item.imageItems }}" class="card-img-top h-50" alt="...">
+            <div class="card-body">
+                <p class="h5">{{ item.nameItem|length > 15 ? item.nameItem|slice(0, 15) ~ '...' : item.nameItem  }}</p>
+                <p>
+                    {% set comma = "," %}
+                    {% for tag in item.tagItem %}
+                        {% if tag != null %}
+                        {{ tag }}
+                            {% if loop.last != true %}
+                                {{ comma }}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </p>
+            </div>
+            <a href="{{ path('item.view', {itemid: item.id}) }}"
+                class="card-link text-center mb-1">{% trans %}VIEW{% endtrans %}</a>
+        </div>
+        {% endfor %}
+        <div class="col-md-1 m-auto">
+            <nav>
+                <ul class="pagination">
+                    {% if next < items|length %}
+                    <li class="page-item"><a class="page-link ms-4"
+                            href="{{ path('home', {  offset: next }) }}">{% trans %}Next{% endtrans %}</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
     </div>
-        <a href="{{ path('item.view', {itemid: item.id}) }}" class="card-link text-center mb-1">{% trans %}VIEW{% endtrans %}</a>
-    </div>
-    {% endfor %}
-</div>
 
-<nav class="d-flex justify-content-end">
-    <ul class="pagination">
-        {% if previous >= 0 %}
-            <li class="page-item"><a class="page-link" href="{{ path('home', {  offset: previous }) }}">{% trans %}Previous{% endtrans %}</a></li>
-        {% endif %}
-        {% if next < items|length %}
-            <li class="page-item"><a class="page-link" href="{{ path('home', {  offset: next }) }}">{% trans %}Next{% endtrans %}</a></li>
-        {% endif %}
-    </ul>
-</nav>
 
 
 
