@@ -9,12 +9,45 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-    
-   {{'This friendly message is coming from:'|trans }}
-    <ul>
-        <li>Your controller at <code><a href="{{ 'E:/_SOFT/OpenServer/domains/testsite/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'E:/_SOFT/OpenServer/domains/testsite/templates/main/index.html.twig'|file_link(0) }}">templates/main/index.html.twig</a></code></li>
+    <h1 class="mb-5">{% trans %}Last added Items{% endtrans %}</h1>
+
+<div class="d-flex">
+    {% for item in items %}
+    <div class="card mb-5 p-0 ms-3 shadow-sm" style="width: 11rem;">
+    <img src="{{ asset('images/items/') }}{{ item.imageItems }}" class="card-img-top h-50" alt="...">
+    <div class="card-body">
+        <p class="h5">{{ item.nameItem|length > 15 ? item.nameItem|slice(0, 15) ~ '...' : item.nameItem  }}</p>
+        <p class="h6">
+            {% set comma = "," %}
+            {% for tag in item.tagItem %}
+                {% if tag != null %}
+                {{ tag }}
+                    {% if loop.last != true %}
+                        {{ comma }} 
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </p>
+    </div>
+        <a href="{{ path('item.view', {itemid: item.id}) }}" class="card-link text-center mb-1">{% trans %}VIEW{% endtrans %}</a>
+    </div>
+    {% endfor %}
+</div>
+
+<nav class="d-flex justify-content-end">
+    <ul class="pagination">
+        {% if previous >= 0 %}
+            <li class="page-item"><a class="page-link" href="{{ path('home', {  offset: previous }) }}">{% trans %}Previous{% endtrans %}</a></li>
+        {% endif %}
+        {% if next < items|length %}
+            <li class="page-item"><a class="page-link" href="{{ path('home', {  offset: next }) }}">{% trans %}Next{% endtrans %}</a></li>
+        {% endif %}
     </ul>
+</nav>
+
+
+
+
+
 </div>
 {% endblock %}

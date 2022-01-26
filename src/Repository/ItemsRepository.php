@@ -6,6 +6,7 @@ use App\Entity\Items;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * @method Items|null find($id, $lockMode = null, $lockVersion = null)
@@ -15,6 +16,9 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ItemsRepository extends ServiceEntityRepository
 {
+
+    public const PAGINATOR_PER_PAGE = 4;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Items::class);
@@ -40,6 +44,18 @@ class ItemsRepository extends ServiceEntityRepository
         $this->_em->persist($item);
         $this->_em->flush();
         return $item;
+    }
+
+    public function getAllItemsPaginator(int $offset): Paginator
+    {
+        $query = $this->createQueryBuilder('c')
+            ->orderBy('c.datecreateitem', 'DESC')
+            ->setMaxResults(self::PAGINATOR_PER_PAGE)
+            ->setFirstResult($offset)
+            ->getQuery()
+        ;
+
+        return new Paginator($query);
     }
 
 

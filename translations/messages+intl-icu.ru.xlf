@@ -305,46 +305,62 @@
         <source>VIEW</source>
         <target>Посмотреть</target>
       </trans-unit>
-      <trans-unit id="my1" resname="Category">
+      <trans-unit id="KSwG8AR" resname="Category">
         <source>Category</source>
         <target>Категории</target>
       </trans-unit>
-      <trans-unit id="my2" resname="Title">
+      <trans-unit id="fozSBW2" resname="Title">
         <source>Title</source>
         <target>Наименование</target>
       </trans-unit>
-      <trans-unit id="my3" resname="COLLECTIONS">
+      <trans-unit id="NOLHUu." resname="COLLECTIONS">
         <source>COLLECTIONS</source>
         <target>КОЛЛЕКЦИИ</target>
       </trans-unit>
-      <trans-unit id="my4" resname="Status">
+      <trans-unit id="kg5BPH1" resname="Status">
         <source>Status</source>
         <target>В сети</target>
       </trans-unit>
-      <trans-unit id="my5" resname="Roles">
+      <trans-unit id="wlM3BVR" resname="Roles">
         <source>Roles</source>
         <target>Права</target>
       </trans-unit>
-      <trans-unit id="my6" resname="Registerdate">
+      <trans-unit id="7xtyeXK" resname="Registerdate">
         <source>Registerdate</source>
         <target>Дата регистрации</target>
       </trans-unit>
-      <trans-unit id="my7" resname="NameItem">
+      <trans-unit id="OqKokV5" resname="NameItem">
         <source>NameItem</source>
         <target>Наименование</target>
       </trans-unit>
-      <trans-unit id="my8" resname="TagItem">
+      <trans-unit id="xGGRqKO" resname="TagItem">
         <source>TagItem</source>
         <target>Теги</target>
       </trans-unit>
-      <trans-unit id="my9" resname="AUTHOR">
+      <trans-unit id="u2EtJj1" resname="AUTHOR">
         <source>AUTHOR</source>
         <target>СОЗДАТЕЛЬ</target>
       </trans-unit>
-      <trans-unit id="my10" resname="ITEM IMAGE">
+      <trans-unit id="3GAQQ_p" resname="ITEM IMAGE">
         <source>ITEM IMAGE</source>
         <target>ИЗОБРАЖЕНИЕ ЭЛЕМЕНТА</target>
       </trans-unit>
-      </body>
+      <trans-unit id="sooM0Ft" resname="Welcome to Admin panel">
+        <source>Welcome to Admin panel</source>
+        <target>Добро пожаловать в Админ панель</target>
+      </trans-unit>
+      <trans-unit id="cwo0Ryf" resname="Last added Items">
+        <source>Last added Items</source>
+        <target>Последние добавленные Элементы</target>
+      </trans-unit>
+      <trans-unit id="pXsIpIC" resname="Previous">
+        <source>Previous</source>
+        <target>Назад</target>
+      </trans-unit>
+      <trans-unit id="H.V6Kdf" resname="Next">
+        <source>Next</source>
+        <target>Вперед</target>
+      </trans-unit>
+    </body>
   </file>
 </xliff>
