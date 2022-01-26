@@ -24,7 +24,7 @@ class MainController extends AbstractController
 
     #[Route('/{_locale<%app.supported_locales%>}/', name: 'home')]
     public function index(Request $request, ItemsRepository $itemsRepository): Response
-    {
+    { 
         $offset = max(0, $request->query->getInt('offset', 0));
         $paginator = $itemsRepository->getAllItemsPaginator($offset);
 

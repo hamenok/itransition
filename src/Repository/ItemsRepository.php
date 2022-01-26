@@ -59,6 +59,21 @@ class ItemsRepository extends ServiceEntityRepository
     }
 
 
+    public function getItemAndAutor( int $itemID): array
+    {
+       // $entityManager = $this->getEntityManager();
+
+        $query = $this->createQueryBuilder('i')
+            ->select('i.id, i.nameItem, i.tagItem, i.imageItems, i.datecreateitem, i.imageItems,
+                    u.firstname, u.lastname, u.email')
+            ->join(User::class, 'u', 'with','i.author=u.id') 
+            ->where('i.id = :id') 
+            ->setParameter('id', $itemID)
+            ->getQuery();
+
+        return $query->getArrayResult();
+       
+    }
     // /**
     //  * @return Items[] Returns an array of Items objects
     //  */

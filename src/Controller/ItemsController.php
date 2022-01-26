@@ -83,17 +83,17 @@ class ItemsController extends AbstractController
         ]);
     }
 
-    #[Route('/{_locale<%app.supported_locales%>}/items/item/{itemid}', name: 'item.view')]
-    public function viewItem($itemid): Response
+    #[Route('/{_locale<%app.supported_locales%>}/items/item/{itemID}', name: 'item.view')]
+    public function viewItem($itemID, $backPath=null): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
+       
         $user = $this->getUser();
         
-        $items = $this->itemRepository->getAllMyItems($user->getId());
-        $titlePage = 'MY ITEMS';
-        return $this->render('items/index.html.twig', [
+        $items = $this->itemRepository->getItemAndAutor($itemID);
+      
+        return $this->render('items/view.html.twig', [
             'controller_name' => 'ItemsController',
-            'titlePage'=>$titlePage,
+           
             'items'=>$items
         ]);
     }

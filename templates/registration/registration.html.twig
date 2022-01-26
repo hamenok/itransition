@@ -2,7 +2,7 @@
 
 {% block title %}{% trans %}Register{% endtrans %}{% endblock %}
 
-{% block body %}
+{% block content %}
 <div class="container-fluid">
     <div class="row no-gutter justify-content-center">
         <div class="col-12 col-lg-4 col-md-4">
@@ -10,9 +10,9 @@
                 <h1 class="h3 mb-4 fw-normal text-center">{% trans %}Register{% endtrans %}</h1>
                     {{ form_start(registrationForm) }}
                         {{ form_errors(registrationForm.email) }}
-                        {{ form_label(registrationForm.email,'Email'|trans) }}
+                        {{ form_label(registrationForm.email,'Email') }}
                         {{ form_widget(registrationForm.email) }}
-                        {{ form_label(registrationForm.plainPassword,'Password'|trans) }}
+                        {{ form_label(registrationForm.plainPassword,'Password') }}
                         {% if form_errors(registrationForm.plainPassword) %}
                             <div class="alert alert-danger" role="alert">
                                 {{ form_errors(registrationForm.plainPassword) }}
@@ -21,7 +21,7 @@
                         {{ form_widget(registrationForm.plainPassword) }}
                         {{ form_errors(registrationForm.agreeTerms) }}
                         {{ form_widget(registrationForm.agreeTerms) }}
-                        {{ form_label(registrationForm.agreeTerms,'Сonfirm'|trans) }}
+                        {{ form_label(registrationForm.agreeTerms,'Сonfirm') }}
                         <div class="d-grid">
                             {{ form_row(registrationForm.save) }}
                         </div>

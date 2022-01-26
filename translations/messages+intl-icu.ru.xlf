@@ -361,6 +361,38 @@
         <source>Next</source>
         <target>Вперед</target>
       </trans-unit>
+      <trans-unit id="8f.Y_zr" resname="VIEW ITEM">
+        <source>VIEW ITEM</source>
+        <target>ПРОСМОТР ЭЛЕМЕНТА</target>
+      </trans-unit>
+      <trans-unit id="qIsnOf0" resname="ITEM&amp;nbsp;">
+        <source>ITEM&amp;nbsp;</source>
+        <target><![CDATA[ЭЛЕМЕНТ&nbsp;]]></target>
+      </trans-unit>
+      <trans-unit id="RBhh9yG" resname="IMAGE NOT FOUND">
+        <source>IMAGE NOT FOUND</source>
+        <target>ИЗОБРАЖЕНИЕ НЕ НАЙДЕНО</target>
+      </trans-unit>
+      <trans-unit id="hVDzQFO" resname="ITEM">
+        <source>ITEM</source>
+        <target>ЭЛЕМЕНТ</target>
+      </trans-unit>
+      <trans-unit id="JrlDXoI" resname="NAME AUTHOR">
+        <source>NAME AUTHOR</source>
+        <target>ИМЯ АВТОРА</target>
+      </trans-unit>
+      <trans-unit id="1ym30FD" resname="EMAIL AUTHOR">
+        <source>EMAIL AUTHOR</source>
+        <target>ПОЧТА АВТОРА</target>
+      </trans-unit>
+      <trans-unit id="2BVISVd" resname="DATE CREATE">
+        <source>DATE CREATE</source>
+        <target>ДАТА СОЗДАНИЯ</target>
+      </trans-unit>
+      <trans-unit id="_qyt7at" resname="LIKE">
+        <source>LIKE</source>
+        <target>НРАВИТСЯ</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
