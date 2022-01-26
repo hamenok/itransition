@@ -33,7 +33,9 @@
         {% for item in items %}
         <div class=" col-md-2 card mb-5 p-0 ms-4 shadow-sm" style="width: 14rem; min-width:163px">
             <img src="{{ asset('images/items/') }}{{ item.imageItems }}" class="card-img-top h-50" alt="...">
+            
             <div class="card-body">
+            <p class="ms-1" style="font-size: 12px;">#{{ item.id }}</p>
                 <p class="h5">{{ item.nameItem|length > 15 ? item.nameItem|slice(0, 15) ~ '...' : item.nameItem  }}</p>
                 <p>
                     {% set comma = "," %}
@@ -46,7 +48,9 @@
                         {% endif %}
                     {% endfor %}
                 </p>
+                
             </div>
+            <p class="ms-1" style="font-size: 12px;">{{ item.datecreateitem|date('Y-m-d H:m') }}</p>
             <a href="{{ path('item.view', {itemid: item.id}) }}"
                 class="card-link text-center mb-1">{% trans %}VIEW{% endtrans %}</a>
         </div>
