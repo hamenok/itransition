@@ -45,6 +45,17 @@ class UserRepository extends ServiceEntityRepository
         $this->_em->flush();
     }
 
+    public function getAll(): array
+    {
+        $query = $this->createQueryBuilder('i')
+        ->select('i.id')
+        ->getQuery();
+
+    return $query->getArrayResult();
+
+    }
+
+
     public function getOne(int $userid): object
     {
         return parent::find($userid);
