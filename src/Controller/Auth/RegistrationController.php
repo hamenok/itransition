@@ -31,7 +31,7 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $allUser[] = $this->userRepository->getAll();
-            if (count($allUser)<1) {
+            if (count($allUser)<=1) {
                 $user->setRoles(['ROLE_ADMIN']);
             } else {
                 $user->setRoles(['ROLE_USER']);
