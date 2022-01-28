@@ -393,6 +393,14 @@
         <source>LIKE</source>
         <target>НРАВИТСЯ</target>
       </trans-unit>
+      <trans-unit id="t8X9Wl7" resname="Add your comment">
+        <source>Add your comment</source>
+        <target>Добавьте Ваш комментарий</target>
+      </trans-unit>
+      <trans-unit id="n9coxmy" resname="Add">
+        <source>Add</source>
+        <target>Добавить</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

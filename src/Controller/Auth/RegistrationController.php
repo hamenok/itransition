@@ -24,15 +24,15 @@ class RegistrationController extends AbstractController
     #[Route('/{_locale<%app.supported_locales%>}/registration', name: 'app_registration')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
-
+        $allUser[] = $this->userRepository->getAll();
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $allUser[] = $this->userRepository->getAll();
-            if (count($allUser)<=1) {
-                $user->setRoles(['ROLE_ADMIN']);
+            
+            if (count($allUser[0])<=1) {
+                $user->setRoles(['ROLE_ADMIN','ROLE_USER']);
             } else {
                 $user->setRoles(['ROLE_USER']);
             }

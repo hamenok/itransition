@@ -51,7 +51,7 @@ class UserRepository extends ServiceEntityRepository
         ->select('i.id')
         ->getQuery();
 
-    return $query->getArrayResult();
+        return $query->getArrayResult();
 
     }
 
