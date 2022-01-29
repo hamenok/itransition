@@ -401,6 +401,14 @@
         <source>Add</source>
         <target>Добавить</target>
       </trans-unit>
+      <trans-unit id="my1" resname="Comment added">
+        <source>Comment added</source>
+        <target>Комментарий добавлен</target>
+      </trans-unit>
+       <trans-unit id="my2" resname="Comment added">
+        <source>Comment not added</source>
+        <target>Комментарий не добавлен</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

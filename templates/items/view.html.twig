@@ -186,7 +186,7 @@
                                         <p class="form-label">{% trans %}LIKE{% endtrans %}</P>
                                     </td>
                                     <th scope="row">
-                                        0
+                                        <i class="fa fa-user" aria-hidden="true"></i>0
                                     </th>
                                 </tr>
                             </tbody>
@@ -209,28 +209,47 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header"><strong>{% trans %}Commentaries{% endtrans %}</strong></div>
-                <div class="card-body">
-                    <textarea class="form-control" minlength="5" maxlength="140" rows="2" placeholder="{% trans %}Add your comment{% endtrans %}"></textarea>
-                    <div class="mar-top d-flex justify-content-center">
-                        <button class="btn btn-sm btn-primary pull-right btn-block w-50" type="submit"><i
-                                class="fa fa-pencil fa-fw"></i>{% trans %}Add{% endtrans %}</button>
+                {% if is_granted('ROLE_USER') %}    
+                    <div class="card-body">
+                        {% for message in app.flashes('success') %}
+                            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                                <strong>{{ message|trans }}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                        {% for message in app.flashes('error') %}
+                            <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                                <strong>{{ message|trans }}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                        
+                        {{ form_start(addComment,{'action': path('add.comment',{'itemID': items[0]['id'], 'userID': app.user.id})}) }}
+                            {{ form_row(addComment.message) }}
+                                <div class="mar-top d-flex justify-content-center">
+                                    <button class="btn btn-sm btn-primary pull-right btn-block w-50" id="sendcomment" type="submit" url={{path('add.comment',{'itemID': items[0]['id'], 'userID': app.user.id})}}><i
+                                            class="fa fa-pencil fa-fw"></i>{% trans %}Add{% endtrans %}</button>
+                                </div>
+                        {{ form_end(addComment) }}
                     </div>
-                </div>
+                {% endif %}
             </div>
             <div class="panel">
                 <div class="panel-body">
-                    <div class="media-block">
-                        <a class="media-left me-2" href="#"><img class="img-circle img-sm" alt="Профиль пользователя"
-                                src="https://bootstraptema.ru/snippets/icons/2016/mia/1.png"></a>
-                        <div class="media-body">
-                            <div class="mar-btm">
-                                <a href="#" class="btn-link text-semibold media-heading box-inline">Максим</a>
-                                <p class="text-muted text-sm"> - 19-06-2016</p>
+                    {% for msg in allmsg %}
+                        <div class="media-block">
+                            <div class="media-left me-2" href="#"><img class="img-circle img-sm" alt="Профиль пользователя"
+                                    src="{{ asset('images/users/') }}{{ allmsg[loop.index-1].avatar }}"></div>
+                            <div class="media-body">
+                                <div class="mar-btm">
+                                    <a href="#" class="btn-link text-semibold media-heading box-inline">{{ allmsg[loop.index-1].email }}</a>
+                                    <p class="text-muted text-sm">{{ allmsg[loop.index-1].datecomment|date('Y-m-d H:m:s') }}</p>
+                                </div>
+                                <p>{{ allmsg[loop.index-1].message }}</p>
+                                <hr>
                             </div>
-                            <p>Секция с комментариями для сайта с подключенным Bootstrap!!!</p>
-                            <hr>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

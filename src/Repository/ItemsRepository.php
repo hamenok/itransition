@@ -31,6 +31,11 @@ class ItemsRepository extends ServiceEntityRepository
         );
     }
 
+    public function getOne(int $itemid): object
+    {
+        return parent::find($itemid);
+    }
+
     public function setUpdateItem(Items $item): object
     {
         $this->_em->flush();

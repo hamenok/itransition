@@ -26,4 +26,30 @@ jQuery(document).ready(function() {
         }
     })
 
+
+    $('#sendcomment').on('click', function (e) {
+        e.preventDefault();
+        let $form = $('form');
+        let $url =  $('#sendcomment').attr( 'url' );
+        
+        $.ajax({
+            type: "POST",
+            url: $url ,
+            data: $form.serialize(),
+            cache: false,
+            success: function (response) {
+                $('.panel-body').load(window.location + ' .panel-body >  *');
+                $('form textarea').val('');
+                console.log(response);
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
+    });
+
+
+
+
+
 });

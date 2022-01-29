@@ -11,16 +11,20 @@ use App\Repository\ItemsRepository;
 use App\Entity\Items;
 use App\Form\ItemsFormType;
 use App\Service\FileManagerServiceInterface;
+use App\Repository\CommentariesRepository;
+use App\Entity\Commentaries;
+use App\Form\CommentariesFormType;
 
 class ItemsController extends AbstractController
 {
 
     private $userRepository;
 
-    public function __construct(UserRepository $userRepository, ItemsRepository $itemRepository)
+    public function __construct(UserRepository $userRepository, ItemsRepository $itemRepository, CommentariesRepository $commentariesRepository)
     {
         $this->userRepository = $userRepository;
         $this->itemRepository = $itemRepository;
+        $this->commentariesRepository = $commentariesRepository;
     }
 
     #[Route('/{_locale<%app.supported_locales%>}/items', name: 'items')]
@@ -84,17 +88,20 @@ class ItemsController extends AbstractController
     }
 
     #[Route('/{_locale<%app.supported_locales%>}/items/item/{itemID}', name: 'item.view')]
-    public function viewItem($itemID, $backPath=null): Response
+    public function viewItem($itemID): Response
     {
-       
-        $user = $this->getUser();
         
         $items = $this->itemRepository->getItemAndAutor($itemID);
-      
+
+        $comment = new Commentaries();
+        $form = $this->createForm(CommentariesFormType::class, $comment);
+        $allmsg = $this->commentariesRepository->getCommentaries($itemID);
+
         return $this->render('items/view.html.twig', [
             'controller_name' => 'ItemsController',
-           
-            'items'=>$items
+            'addComment' => $form->createView(),
+            'items'=>$items,
+            'allmsg' => $allmsg
         ]);
     }
 }
