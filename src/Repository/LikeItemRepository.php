@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\LikeItem;
+use App\Entity\Items;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -19,32 +21,49 @@ class LikeItemRepository extends ServiceEntityRepository
         parent::__construct($registry, LikeItem::class);
     }
 
-    // /**
-    //  * @return LikeItem[] Returns an array of LikeItem objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function addLike(LikeItem $like, $userID,$itemID)
     {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('l.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $like->setUserID($userID);
+        $like->setItemID($itemID);
+        $this->_em->persist($like);
+        $this->_em->flush();
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?LikeItem
+    public function delLike(LikeItem $like)
     {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        
+        $this->_em->remove($like);
+        $this->_em->flush();
     }
-    */
+    
+    public function getAllLike(int $itemID): array
+    {
+        $query = $this->createQueryBuilder('l')
+        ->select('l.id') 
+        ->join(Items::class, 'i', 'with','l.itemID=i.id') 
+        ->where('l.itemID = :itemID')
+        ->setParameter('itemID', $itemID)
+        ->getQuery();
+
+        return $query->getArrayResult();
+    }
+
+    public function getLikeUser(int $itemID, int $userID)
+    {
+        $query = $this->createQueryBuilder('l')
+        ->select('l.id')
+        ->join(User::class, 'u', 'with','l.userID=u.id') 
+        ->join(Items::class, 'i', 'with','l.itemID=i.id') 
+        ->where('l.userID = :userID and l.itemID = :itemID') 
+        ->setParameter('userID', $userID)
+        ->setParameter('itemID', $itemID)
+        ->getQuery();
+
+        return $query->getArrayResult();
+    }
+
+    public function getOne(int $like): object
+    {
+        return parent::find($like);
+    }
 }

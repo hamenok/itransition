@@ -14,17 +14,18 @@ use App\Service\FileManagerServiceInterface;
 use App\Repository\CommentariesRepository;
 use App\Entity\Commentaries;
 use App\Form\CommentariesFormType;
-
+use App\Repository\LikeItemRepository;
 class ItemsController extends AbstractController
 {
 
     private $userRepository;
 
-    public function __construct(UserRepository $userRepository, ItemsRepository $itemRepository, CommentariesRepository $commentariesRepository)
+    public function __construct(UserRepository $userRepository, ItemsRepository $itemRepository, CommentariesRepository $commentariesRepository, LikeItemRepository $likeItemRepository)
     {
         $this->userRepository = $userRepository;
         $this->itemRepository = $itemRepository;
         $this->commentariesRepository = $commentariesRepository;
+        $this->likeItemRepository = $likeItemRepository;
     }
 
     #[Route('/{_locale<%app.supported_locales%>}/items', name: 'items')]
@@ -96,12 +97,13 @@ class ItemsController extends AbstractController
         $comment = new Commentaries();
         $form = $this->createForm(CommentariesFormType::class, $comment);
         $allmsg = $this->commentariesRepository->getCommentaries($itemID);
-
+        $allLike = $this->likeItemRepository->getAllLike($itemID);
         return $this->render('items/view.html.twig', [
             'controller_name' => 'ItemsController',
             'addComment' => $form->createView(),
             'items'=>$items,
-            'allmsg' => $allmsg
+            'allmsg' => $allmsg,
+            'likes' => count($allLike)
         ]);
     }
 }

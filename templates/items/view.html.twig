@@ -115,12 +115,16 @@
     .mar-top {
         margin-top: 15px;
     }
+
+    #heart_img:hover {
+        cursor: pointer;
+    }
 </style>
 <div class="d-flex justify-content-center mt-3">
     <h1 class="display-6">{% trans %}VIEW ITEM{% endtrans %}</h1>
 </div>
 <div class="container">
-    <div class="d-flex justify-content-center mb-4">
+    <div class="d-flex justify-content-center mb-4 like">
         <div class="card shadow-sm mt-3" style="width: 60rem;">
             <div class="card-header h4">
                 <strong
@@ -186,7 +190,11 @@
                                         <p class="form-label">{% trans %}LIKE{% endtrans %}</P>
                                     </td>
                                     <th scope="row">
-                                        <i class="fa fa-user" aria-hidden="true"></i>0
+                                    {% if is_granted('ROLE_USER') %}  
+                                       <img src="{{asset('images/items/like.png') }}" style="width: 20px;" class="me-3" id="heart_img" url={{path('like',{'itemID': items[0]['id'], 'userID': app.user.id})}}><span id="likeCount">{{likes}}</span>
+                                    {% else %}
+                                         <img src="{{asset('images/items/like.png') }}" style="width: 20px;" class="me-3" ><span id="likeCount">{{likes}}</span>
+                                    {% endif %}
                                     </th>
                                 </tr>
                             </tbody>

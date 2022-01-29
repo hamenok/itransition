@@ -38,17 +38,12 @@ class CommentariesController extends AbstractController
                 if ($msg != null){
                     $this->commentariesRepository->addComment($comment,$msg,$user,$item);
                     $this->addFlash('success','Comment added');
-                    
                 } else {
-                    $this->addFlash('error','Comment not added');
-                    
+                    $this->addFlash('error','Comment not added');   
                 }
-                
-    
             }
            // $allmsg = $this->commentariesRepository->getCommentaries($itemID);
-            return 
-            $this->redirectToRoute('item.view',[
+            return $this->redirectToRoute('item.view',[
                 'itemID' => $itemID
                 
             ]);

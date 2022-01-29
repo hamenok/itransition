@@ -26,7 +26,6 @@ jQuery(document).ready(function() {
         }
     })
 
-
     $('#sendcomment').on('click', function (e) {
         e.preventDefault();
         let $form = $('form');
@@ -38,7 +37,7 @@ jQuery(document).ready(function() {
             data: $form.serialize(),
             cache: false,
             success: function (response) {
-                $('.panel-body').load(window.location + ' .panel-body >  *');
+                $('.panel-body').load(window.location + ' .panel-body > *');
                 $('form textarea').val('');
                 console.log(response);
             },
@@ -47,8 +46,31 @@ jQuery(document).ready(function() {
             }
         });
     });
+$('body').on('click','#heart_img', function(){
+  
+        $(this).animate({ width: "15px" }, 100);
+        $(this).animate({ width: "20px" }, 100);
+    
 
-
+        let $url =  $('#heart_img').attr( 'url' );
+        
+        $.ajax({
+            type: "POST",
+            url: $url ,
+            cache: false,
+            success: function (response) {
+                $('.like').load(window.location + ' .like > *');
+        
+                console.log(response);
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
+    
+}); 
+    
+    
 
 
 
