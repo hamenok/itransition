@@ -4,8 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Entity\Role;
+use App\Repository\RoleRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
@@ -17,11 +18,16 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 
 class UserCrudController extends AbstractCrudController
 {
+
+    public function __construct(RoleRepository $roleRepository)
+    {
+        $this->roleRepository = $roleRepository;
+    }
+
     public static function getEntityFqcn(): string
     {
         return User::class;
@@ -45,11 +51,7 @@ class UserCrudController extends AbstractCrudController
             });
     }
 
-    public function configureCrud(Crud $crud):Crud 
-    {
-        return $crud
-        ->overrideTemplate('crud/detail', 'admin/showUser.html.twig');
-    }
+  
 
     public function configureFilters(Filters $filters): filters
     {
@@ -62,6 +64,14 @@ class UserCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
+        
+        $roles[]="";
+        $allRole = $this->roleRepository->getAllRoleName();
+        foreach ($allRole as $value)
+        {
+            $roles[substr($value['rolename'],5)] = $value['rolename'];
+        }
+      
         return [
             ImageField::new('avatar', 'USER AVATAR')
                 ->setBasePath('images/users')
@@ -72,21 +82,15 @@ class UserCrudController extends AbstractCrudController
             IdField::new('id', '#')->hideOnForm(),
             EmailField::new('email', 'EMAIL'),
             TextField::new('password', 'PASSWORD')->hideOnIndex(),
-            TextField::new('firstname', 'FIRST NAME')->hideOnIndex(),
+            TextField::new('firstname', 'FIRST NAME'),
             TextField::new('lastname', 'LAST NAME')->hideOnIndex(),
-            TelephoneField::new('phone', 'PHONE')->hideOnIndex(),
+            TelephoneField::new('phone', 'PHONE'),
             BooleanField::new('status', 'ONLINE'),
-            CollectionField::new('roles', 'ROLE'),
+            ChoiceField::new('roles', 'ROLE')
+                ->setChoices($roles)->allowMultipleChoices(),
+          //  CollectionField::new('roles', 'ROLE')->hideOnIndex(),
             DateTimeField::new('lastactivity', 'LAST ACTIVITY')->hideOnForm(),
             DateTimeField::new('registerdate', 'DATA REGISTRATION')->hideOnForm(),
-            
-           // CollectionField::new('roles')->ShowEntryLabel(true),
-
-           
-           // avatar;
-            //culture;
-
-
         ];
     }
     

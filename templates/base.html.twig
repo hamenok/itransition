@@ -55,7 +55,7 @@
                                 <a class="dropdown-item" href="{{ path('profile', {id: app.user.id}) }}">{% trans %}My Profile{% endtrans %}</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">{% trans %}My Collection{% endtrans %}</a>
+                                <a class="dropdown-item" href="{{ path('collection.my') }}">{% trans %}My Collections{% endtrans %}</a>
                             </li>
                             {% if is_granted('ROLE_ADMIN') %} 
                                 <li>

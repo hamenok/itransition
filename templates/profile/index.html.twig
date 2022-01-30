@@ -73,6 +73,9 @@
                             {% trans %}ADD ITEMS{% endtrans %}
                         </a>
                     </li>
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>{% trans %}COLLECTIONS{% endtrans %}</span>
+                    </h6>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -85,6 +88,19 @@
                             {% trans %}MY COLLECTIONS{% endtrans %}
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('collection.add') }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            {% trans %}ADD COLLECTIONS{% endtrans %}
+                        </a>
+                    </li>
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>{% trans %}OTHER{% endtrans %}</span>
+                    </h6>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

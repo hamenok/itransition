@@ -137,15 +137,15 @@
                             <tbody>
                                 <tr>
                                     <td class="align-bottom">
-                                        <p class="form-label">{% trans %}TITLE{% endtrans %}</P>
+                                        {% trans %}TITLE{% endtrans %} 
                                     </td>
                                     <th scope="row">
                                         {{ items[0]['nameItem'] }}
                                     </th>
                                 </tr>
                                 <tr>
-                                    <td class="align-bottom">
-                                        <p class="form-label">{% trans %}TAGS{% endtrans %}</P>
+                                    <td class="align-middle">
+                                        {% trans %}TAGS{% endtrans %}
                                     </td>
                                     <th scope="row">
                                         <p>
@@ -163,7 +163,7 @@
                                 </tr>
                                 <tr>
                                     <td class="align-bottom">
-                                        <p class="form-label">{% trans %}NAME AUTHOR{% endtrans %}</P>
+                                        {% trans %}NAME AUTHOR{% endtrans %}
                                     </td>
                                     <th scope="row">
                                         {{ items[0]['firstname'] }}{{ items[0]['lastname'] }}
@@ -171,7 +171,7 @@
                                 </tr>
                                 <tr>
                                     <td class="align-bottom">
-                                        <p class="form-label">{% trans %}EMAIL AUTHOR{% endtrans %}</P>
+                                        {% trans %}EMAIL AUTHOR{% endtrans %}
                                     </td>
                                     <th scope="row">
                                         {{ items[0]['email'] }}
@@ -179,7 +179,7 @@
                                 </tr>
                                 <tr>
                                     <td class="align-bottom">
-                                        <p class="form-label">{% trans %}DATE CREATE{% endtrans %}</P>
+                                        {% trans %}DATE CREATE{% endtrans %}
                                     </td>
                                     <th scope="row">
                                         {{ items[0]['datecreateitem']|date('Y:m:d H:m') }}
@@ -187,7 +187,7 @@
                                 </tr>
                                 <tr>
                                     <td class="align-bottom">
-                                        <p class="form-label">{% trans %}LIKE{% endtrans %}</P>
+                                        {% trans %}LIKE{% endtrans %}
                                     </td>
                                     <th scope="row">
                                     {% if is_granted('ROLE_USER') %}  

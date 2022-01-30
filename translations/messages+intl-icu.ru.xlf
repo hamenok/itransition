@@ -103,7 +103,7 @@
       </trans-unit>
       <trans-unit id="GQ4wdjm" resname="MY COLLECTIONS">
         <source>MY COLLECTIONS</source>
-        <target>МОЯ КОЛЛЕКЦИЯ</target>
+        <target>МОИ КОЛЛЕКЦИИ</target>
       </trans-unit>
       <trans-unit id="MNRk7MD" resname="MY COMMENTS">
         <source>MY COMMENTS</source>
@@ -432,6 +432,54 @@
       <trans-unit id="nJ7Ow7c" resname="Likes in the system">
         <source>Likes in the system</source>
         <target>Лайков в системе</target>
+      </trans-unit>
+      <trans-unit id="AzJqynJ" resname="NEW COLLECTION">
+        <source>NEW COLLECTION</source>
+        <target>НОВАЯ КОЛЛЕКЦИЯ</target>
+      </trans-unit>
+      <trans-unit id="zvcG2p_" resname="CATEGORY">
+        <source>CATEGORY</source>
+        <target>КАТЕГОРИЯ</target>
+      </trans-unit>
+      <trans-unit id="y4b_75H" resname="ADD COLLECTIONS">
+        <source>ADD COLLECTIONS</source>
+        <target>ДОБАВИТЬ КОЛЛЕКЦИЮ</target>
+      </trans-unit>
+      <trans-unit id="HFXZuCb" resname="OTHER">
+        <source>OTHER</source>
+        <target>ДРУГОЕ</target>
+      </trans-unit>
+      <trans-unit id="uhgQyCk" resname="ADD COLLECTION">
+        <source>ADD COLLECTION</source>
+        <target>ДОБАВИТЬ КОЛЛЕКЦИЮ</target>
+      </trans-unit>
+      <trans-unit id="uB63psE" resname="ItemCollections">
+        <source>ItemCollections</source>
+        <target>Коллекции</target>
+      </trans-unit>
+      <trans-unit id="v9wN5wm" resname="Descriptions">
+        <source>Descriptions</source>
+        <target>Описание</target>
+      </trans-unit>
+      <trans-unit id="67cSnKa" resname="Datecreate">
+        <source>Datecreate</source>
+        <target>Дата создания</target>
+      </trans-unit>
+      <trans-unit id="g11tyIt" resname="ADMIN">
+        <source>ADMIN</source>
+        <target>АДМИН</target>
+      </trans-unit>
+      <trans-unit id="n5.q3nY" resname="Collections">
+        <source>Collections</source>
+        <target>Коллекции</target>
+      </trans-unit>
+      <trans-unit id="h4kUbdR" resname="My Collections">
+        <source>My Collections</source>
+        <target>Мои коллекции</target>
+      </trans-unit>
+      <trans-unit id="ORcxTVN" resname="MY COLLECTION">
+        <source>MY COLLECTION</source>
+        <target>МОИ КОЛЛЕКЦИИ</target>
       </trans-unit>
     </body>
   </file>

@@ -20,7 +20,6 @@ class ItemsFormType extends AbstractType
                 'required' => true
             ])
             ->add('tagItem', CollectionType::class, [
-                
                 'allow_delete'=>true,
                 'allow_add' => true,
                 'required' => false

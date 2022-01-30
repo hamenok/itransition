@@ -56,6 +56,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'userID', targetEntity: LikeItem::class)]
     private $likeItems;
 
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: ItemCollections::class)]
+    private $itemCollections;
+
     public function __toString() {
         return $this->id;
     }
@@ -65,6 +68,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->item = new ArrayCollection();
         $this->commentID = new ArrayCollection();
         $this->likeItems = new ArrayCollection();
+        $this->itemCollections = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -305,6 +309,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($likeItem->getUserID() === $this) {
                 $likeItem->setUserID(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ItemCollections[]
+     */
+    public function getItemCollections(): Collection
+    {
+        return $this->itemCollections;
+    }
+
+    public function addItemCollection(ItemCollections $itemCollection): self
+    {
+        if (!$this->itemCollections->contains($itemCollection)) {
+            $this->itemCollections[] = $itemCollection;
+            $itemCollection->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeItemCollection(ItemCollections $itemCollection): self
+    {
+        if ($this->itemCollections->removeElement($itemCollection)) {
+            // set the owning side to null (unless already changed)
+            if ($itemCollection->getAuthor() === $this) {
+                $itemCollection->setAuthor(null);
             }
         }
 

@@ -1,0 +1,59 @@
+{% extends 'profile/index.html.twig' %}
+
+{% block title %}Hello ItemCollectionsController!{% endblock %}
+
+{% block wrapper %}
+
+
+<div class="d-flex justify-content-center col-md-12">
+        <div class="card shadow-sm mt-3" style="width: 60rem;">
+            <div class="card-header">
+                <strong class="d-inline-block text-primary">{% trans %}NEW COLLECTION{% endtrans %}</strong>
+            </div>
+            <div class="col p-4 d-flex flex-row ">
+                <div class="col-md-12">
+                    <div class="card-body">
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                            <strong>{{ message|trans }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                    {{ form_start(addCollection) }}
+                    {{ form_errors(addCollection) }} 
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td class="align-bottom">
+                                        <p class="form-label">{% trans %}TITLE{% endtrans %}</P>
+                                    </td>
+                                    <th scope="row">
+                                       {{ form_widget(addCollection.title) }}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td class="align-bottom">
+                                        <p class="form-label">{% trans %}CATEGORY{% endtrans %}</P>
+                                    </td>
+                                    <th scope="row">
+                                       {{ form_widget(addCollection.category) }}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">
+                                        <p class="form-label">{% trans %}DESCRIPTION{% endtrans %}</P>
+                                    </td>
+                                    <th scope="row">
+                                       {{ form_widget(addCollection.descriptions) }}
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        {{ form_widget(addCollection.save, {attr:{class:'btn btn-primary mt-4'}})}}
+                        {{ form_end(addCollection) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

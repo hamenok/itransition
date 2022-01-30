@@ -14,6 +14,7 @@ use App\Entity\Role;
 use App\Entity\Items;
 use App\Entity\Category;
 use App\Entity\Commentaries;
+use App\Entity\ItemCollections;
 use App\Repository\UserRepository;
 use App\Repository\ItemsRepository;
 use App\Repository\LikeItemRepository;
@@ -50,34 +51,10 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-        // the name visible to end users
-        ->setTitle('ADMIN PANEL')
-        // you can include HTML contents too (e.g. to link to an image)
-       
-
-     
-
-        // there's no need to define the "text direction" explicitly because
-        // its default value is inferred dynamically from the user locale
-     
-
-        // set this option if you prefer the page content to span the entire
-        // browser width, instead of the default design which sets a max width
-        ->renderContentMaximized()
-
-        // set this option if you prefer the sidebar (which contains the main menu)
-        // to be displayed as a narrow column instead of the default expanded design
-        //->renderSidebarMinimized()
-
-        // by default, all backend URLs include a signature hash. If a user changes any
-        // query parameter (to "hack" the backend) the signature won't match and EasyAdmin
-        // triggers an error. If this causes any issue in your backend, call this method
-        // to disable this feature and remove all URL signature checks
-        ->disableUrlSignatures()
-
-        // by default, all backend URLs are generated as absolute URLs. If you
-        // need to generate relative URLs instead, call this method
-        ->generateRelativeUrls()
+            ->setTitle('ADMIN PANEL')
+            ->renderContentMaximized()
+            ->disableUrlSignatures()
+            ->generateRelativeUrls()
     ;
     }
 
@@ -95,7 +72,8 @@ class DashboardController extends AbstractDashboardController
                 MenuItem::linkToCrud('Commentaries', 'fa fa-commenting-o', Commentaries::class),
 
             MenuItem::section('COLLECTIONS'),
-                MenuItem::linkToCrud('Category','fa fa-bookmark', Category::class)
+                MenuItem::linkToCrud('Category','fa fa-bookmark', Category::class),
+                MenuItem::linkToCrud('Collections','fa fa-clone', ItemCollections::class)
 
         ];
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);

@@ -1,0 +1,25 @@
+{% extends 'profile/index.html.twig' %}
+
+{% block title %}{% trans %}MY COLLECTION{% endtrans %}{% endblock %}
+
+{% block wrapper %}
+
+{% for collection in collections %}
+<div class="card" style="width: 18rem;">
+<div class="card-header ">
+    <strong class="d-flex text-primary justify-content-center"><a href="#" style="text-decoration: none;">{{ collection.title }}</a></strong>
+  </div>
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted">{{ collection.category }}</h6>
+    <p class="card-text">{{ collection.descriptions }}</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+{% endfor %}
+
+
+
+
+
+{% endblock %}
