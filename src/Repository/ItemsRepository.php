@@ -53,21 +53,17 @@ class ItemsRepository extends ServiceEntityRepository
 
     public function getAllItemsPaginator(int $offset): Paginator
     {
-        $query = $this->createQueryBuilder('c')
-            ->orderBy('c.datecreateitem', 'DESC')
+        $query = $this->createQueryBuilder('i')
+            ->orderBy('i.datecreateitem', 'DESC')
             ->setMaxResults(self::PAGINATOR_PER_PAGE)
             ->setFirstResult($offset)
-            ->getQuery()
-        ;
+            ->getQuery();
 
         return new Paginator($query);
     }
 
-
     public function getItemAndAutor( int $itemID): array
     {
-       // $entityManager = $this->getEntityManager();
-
         $query = $this->createQueryBuilder('i')
             ->select('i.id, i.nameItem, i.tagItem, i.imageItems, i.datecreateitem, i.imageItems,
                     u.firstname, u.lastname, u.email')
@@ -77,7 +73,6 @@ class ItemsRepository extends ServiceEntityRepository
             ->getQuery();
 
         return $query->getArrayResult();
-       
     }
     // /**
     //  * @return Items[] Returns an array of Items objects

@@ -38,7 +38,10 @@
                 </p>
                 
             </div>
+            <div class="d-flex justify-content-between">
             <p class="ms-1" style="font-size: 12px;">{{ item.datecreateitem|date('Y-m-d H:m') }}</p>
+            <p class="me-3" style="font-size: 12px;"><img src="{{asset('images/items/like.png') }}" style="width: 20px;" class="me-3" >{{item.likeItems|length}}</p>
+            </div>
             <a href="{{ path('item.view', { itemID: item.id }) }}"
                 class="card-link text-center mb-1">{% trans %}VIEW{% endtrans %}
             </a>

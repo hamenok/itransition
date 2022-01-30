@@ -13,8 +13,6 @@ use App\Entity\LikeItem;
 
 class LikeController extends AbstractController
 {
-
-
     public function __construct(LikeItemRepository $likeItemRepository, UserRepository $userRepository, ItemsRepository $itemsRepository)
     {
         $this->likeItemRepository = $likeItemRepository;
