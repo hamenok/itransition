@@ -39,18 +39,18 @@ jQuery(document).ready(function() {
             success: function (response) {
                 $('.panel-body').load(window.location + ' .panel-body > *');
                 $('form textarea').val('');
-                console.log(response);
+               
             },
             error: function (response) {
                 console.log(response);
             }
         });
     });
-$('body').on('click','#heart_img', function(){
-  
+
+    $('body').on('click','#heart_img', function(){
+    
         $(this).animate({ width: "15px" }, 100);
         $(this).animate({ width: "20px" }, 100);
-    
 
         let $url =  $('#heart_img').attr( 'url' );
         
@@ -60,15 +60,34 @@ $('body').on('click','#heart_img', function(){
             cache: false,
             success: function (response) {
                 $('.like').load(window.location + ' .like > *');
-        
-                console.log(response);
             },
             error: function (response) {
                 console.log(response);
             }
         });
+    }); 
+
+    $('body').on('click','.pagination', function(e){
+       
+        e.preventDefault();
+        $page = $('.pagination a').attr('href'); 
+        $.ajax({
+            type: "POST",
+            url: $page,
+            cache: false,
+            success: function (response) {
+                $('.last_item').load($page + ' .last_item > *');
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        
+    });
+            
+            
+        
     
-}); 
+});
     
     
 
