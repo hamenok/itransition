@@ -401,13 +401,37 @@
         <source>Add</source>
         <target>Добавить</target>
       </trans-unit>
-      <trans-unit id="my1" resname="Comment added">
+      <trans-unit id="tHR5Gsr" resname="Comment added">
         <source>Comment added</source>
-        <target>Комментарий добавлен</target>
-      </trans-unit>
-       <trans-unit id="my2" resname="Comment added">
-        <source>Comment not added</source>
         <target>Комментарий не добавлен</target>
+      </trans-unit>
+      <trans-unit id="YlMOmEa" resname="Datecomment">
+        <source>Datecomment</source>
+        <target>Дата комментария</target>
+      </trans-unit>
+      <trans-unit id="L3dmip3" resname="Message">
+        <source>Message</source>
+        <target>Сообщение</target>
+      </trans-unit>
+      <trans-unit id="mjeueNT" resname="COUNT">
+        <source>COUNT</source>
+        <target>КОЛИЧЕСТВО</target>
+      </trans-unit>
+      <trans-unit id="nql3J3T" resname="Users in the system">
+        <source>Users in the system</source>
+        <target>Пользователей в системе</target>
+      </trans-unit>
+      <trans-unit id="g30KkIb" resname="Items in the system">
+        <source>Items in the system</source>
+        <target>Элементов в системе</target>
+      </trans-unit>
+      <trans-unit id="aCl4b07" resname="Comments in the system">
+        <source>Comments in the system</source>
+        <target>Комментариев в системе</target>
+      </trans-unit>
+      <trans-unit id="nJ7Ow7c" resname="Likes in the system">
+        <source>Likes in the system</source>
+        <target>Лайков в системе</target>
       </trans-unit>
     </body>
   </file>

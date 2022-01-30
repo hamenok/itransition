@@ -14,30 +14,37 @@ use App\Entity\Role;
 use App\Entity\Items;
 use App\Entity\Category;
 use App\Entity\Commentaries;
+use App\Repository\UserRepository;
+use App\Repository\ItemsRepository;
+use App\Repository\LikeItemRepository;
+use App\Repository\CommentariesRepository;
 
 class DashboardController extends AbstractDashboardController
 {
+    public function __construct(UserRepository $userRepository, ItemsRepository $itemRepository, CommentariesRepository $commentariesRepository, LikeItemRepository $likeItemRepository)
+    {
+        $this->userRepository = $userRepository;
+        $this->itemRepository = $itemRepository;
+        $this->commentariesRepository = $commentariesRepository;
+        $this->likeItemRepository = $likeItemRepository;
+    }
+
     #[Route('/{_locale<%app.supported_locales%>}/admin', name: 'admin')]
     public function index(): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-       // return parent::index();
+       
+        $allUsersCount = $this->userRepository->getAll();
+        $allItemsCount = $this->itemRepository->getAll();
+        $allCommentariesCount = $this->commentariesRepository->getAll();
+        $allLikesCount = $this->likeItemRepository->getAll();
 
-        // Option 1. You can make your dashboard redirect to some common page of your backend
-        //
-        // $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-        // return $this->redirect($adminUrlGenerator->setController(OneOfYourCrudController::class)->generateUrl());
-
-        // Option 2. You can make your dashboard redirect to different pages depending on the user
-        //
-        // if ('jane' === $this->getUser()->getUsername()) {
-        //     return $this->redirect('...');
-        // }
-
-        // Option 3. You can render some custom template to display a proper dashboard with widgets, etc.
-        // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
-        //
-         return $this->render('admin/index.html.twig');
+         return $this->render('admpanel/index.html.twig',[
+             'allUsersCount' => count($allUsersCount),
+             'allItemsCount' => count($allItemsCount),
+             'allCommentariesCount' => count($allCommentariesCount),
+             'allLikesCount' => count($allLikesCount)
+         ]);
     }
 
     public function configureDashboard(): Dashboard

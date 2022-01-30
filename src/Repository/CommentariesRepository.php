@@ -44,32 +44,9 @@ class CommentariesRepository extends ServiceEntityRepository
 
         return $query->getArrayResult();
     }
-    // /**
-    //  * @return Commentaries[] Returns an array of Commentaries objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function getAll(): array
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        return parent::findAll();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Commentaries
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

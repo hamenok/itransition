@@ -22,7 +22,6 @@ class UserRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry, private UserPasswordHasherInterface $userPasswordHasher)
     {
         parent::__construct($registry, User::class);
-        
     }
 
     /**
@@ -52,7 +51,6 @@ class UserRepository extends ServiceEntityRepository
         ->getQuery();
 
         return $query->getArrayResult();
-
     }
 
 

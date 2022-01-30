@@ -1,0 +1,40 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content_title %}{% trans %}Welcome to Admin panel{% endtrans %}{% endblock %}
+{% block page_actions %}
+    
+{% endblock %}
+
+{% block main %}
+    <table class="table table-hover mt-5">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">{% trans %}ITEM{% endtrans %}</th>
+                <th scope="col">{% trans %}COUNT{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>{% trans %}Users in the system{% endtrans %}</td>
+                <td>{{allUsersCount}}</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>{% trans %}Items in the system{% endtrans %}</td>
+                <td>{{allItemsCount}}</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>{% trans %}Comments in the system{% endtrans %}</td>
+                <td>{{allCommentariesCount}}</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>{% trans %}Likes in the system{% endtrans %}</td>
+                <td>{{allLikesCount}}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

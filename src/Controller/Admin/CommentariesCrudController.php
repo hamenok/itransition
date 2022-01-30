@@ -31,6 +31,9 @@ class CommentariesCrudController extends AbstractCrudController
             })
             ->update(Crud::PAGE_INDEX, Action::DELETE, function(Action $action){
                 return $action->setIcon('fa fa-trash');
+            })
+            ->remove(Crud::PAGE_DETAIL, Action::EDIT, function(Action $action){
+                return $action->setIcon('fa fa-tags');
             });
     }
 

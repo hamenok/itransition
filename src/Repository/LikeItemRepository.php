@@ -66,4 +66,9 @@ class LikeItemRepository extends ServiceEntityRepository
     {
         return parent::find($like);
     }
+
+    public function getAll(): array
+    {
+        return parent::findAll();
+    }
 }

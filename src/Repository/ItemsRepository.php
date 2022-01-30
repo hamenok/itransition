@@ -74,6 +74,11 @@ class ItemsRepository extends ServiceEntityRepository
 
         return $query->getArrayResult();
     }
+
+    public function getAll(): array
+    {
+        return parent::findAll();
+    }
     // /**
     //  * @return Items[] Returns an array of Items objects
     //  */
