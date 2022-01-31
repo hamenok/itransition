@@ -1,0 +1,56 @@
+{% extends 'main/index.html.twig' %}
+
+{% block title %}{% trans %}VIEW COLLECTION{% endtrans %}{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center mt-3">
+    <h1 class="display-6">{% trans %}VIEW COLLECTION{% endtrans %}</h1>
+</div>
+<div class="container">
+    <div class="d-flex justify-content-center mb-4 like">
+        <div class="card shadow-sm mt-3" style="width: 60rem;">
+            <div class="card-header h4">
+                <strong
+                    class="d-inline-block text-primary">{% trans %}COLLECTION {% endtrans %}&nbsp;#{{ collection[0]['id'] }}</strong>
+            </div>
+            <div class="col p-4 d-flex flex-row ">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td class="align-bottom">
+                                        {% trans %}TITLE{% endtrans %} 
+                                    </td>
+                                    <th scope="row">
+                                        {{ collection[0]['title'] }}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td class="align-bottom">
+                                        {% trans %}CATEGORY{% endtrans %}
+                                    </td>
+                                    <th scope="row">
+                                        {{ collection[0]['category'] }}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">
+                                        {% trans %}DESCRIPTION{% endtrans %}
+                                    </td>
+                                    <th scope="row">
+                                        {{ collection[0]['descriptions'] }}
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

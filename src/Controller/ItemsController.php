@@ -62,18 +62,7 @@ class ItemsController extends AbstractController
                 $item->setImageItems('no-item-photo.png');
             }
 
-            // if ($form->get('delete')->isClicked())
-            // {
-            //     if ($item->getImageItems()!='no-item-photo.png' && $item->getImageItems()!=null){
-            //         $fileManagerService->imagePhotoRemove($user->getAvatar(), 'user');
-            //         $item->setImageItems('no-item-photo.png');
-            //         $this->addFlash('photo.delete','Photo was deleted');
-            //         return $this->redirectToRoute('profile.edit',['id'=>$id]);
-            //     } else {
-            //         $this->addFlash('photo.not.delete','Photo not was deleted');
-            //         return $this->redirectToRoute('profile.edit',['id'=>$id]);
-            //     }
-            // }
+            
             $this->addFlash('success','Item added');
             $this->itemRepository->setCreateItem($item,$user);
             return $this->redirectToRoute('items.add',['userID'=>$userID]);
@@ -104,5 +93,14 @@ class ItemsController extends AbstractController
             'allmsg' => $allmsg,
             'likes' => count($allLike)
         ]);
+    }
+
+    #[Route('/{_locale<%app.supported_locales%>}/items/item/remove/{itemID}', name: 'item.remove')]
+    public function removeItem($itemID): Response
+    {
+        $item = $this->itemRepository->getOne($itemID);
+        $this->itemRepository->removeItems($item);
+       
+        return $this->redirectToRoute('items');
     }
 }

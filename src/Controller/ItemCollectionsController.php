@@ -58,5 +58,28 @@ class ItemCollectionsController extends AbstractController
         ]);
     }
 
+    #[Route('/{_locale<%app.supported_locales%>}/collections/collection/{collectionID}', name: 'collection.view')]
+    public function viewCollection($collectionID): Response
+    {
+        $user = $this->getUser();
+        
+        $collection = $this->itemCollectionsRepository->getOne($collectionID);
+        $titlePage = 'COLLECTION';
+        return $this->render('item_collections/more_view.html.twig', [
+            'controller_name' => 'ItemCollectionsController',
+            'titlePage'=>$titlePage,
+            'collection'=>$collection
+        ]);
+    }
+
+    #[Route('/{_locale<%app.supported_locales%>}/collections/collections/remove/{collectionID}', name: 'collection.remove')]
+    public function removeCollection($collectionID): Response
+    {
+        $collection = $this->itemCollectionsRepository->getOneId($collectionID);
+        $this->itemCollectionsRepository->removeItems($collection);
+       
+        return $this->redirectToRoute('collection.my');
+    }
+
 
 }

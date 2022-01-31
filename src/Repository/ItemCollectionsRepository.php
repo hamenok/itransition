@@ -42,4 +42,40 @@ class ItemCollectionsRepository extends ServiceEntityRepository
 
         return $query->getArrayResult();
     }
+
+    public function getAllCollection()
+    {
+        $query = $this->createQueryBuilder('c')
+            ->select('c.id, c.title, c.descriptions, k.title as category')
+            ->join(User::class, 'u', 'with','c.author=u.id')
+            ->join(Category::class, 'k', 'with','k.id=c.category') 
+            ->setMaxResults(7)
+            ->getQuery();
+
+        return $query->getArrayResult();
+    }
+
+    public function getOne(int $cillectionID)
+    {
+        $query = $this->createQueryBuilder('c')
+            ->select('c.id, c.title, c.descriptions, k.title as category')
+            ->join(User::class, 'u', 'with','c.author=u.id')
+            ->join(Category::class, 'k', 'with','k.id=c.category') 
+            ->where('c.id = :id')
+            ->setParameter('id', $cillectionID)
+            ->getQuery();
+
+        return $query->getArrayResult();
+    }
+
+    public function getOneId(int $cillectionID): object
+    {
+        return parent::find($cillectionID);
+    }
+
+    Public function removeItems(ItemCollections $itemCollections)
+    {
+        $this->_em->remove($itemCollections);
+        $this->_em->flush();
+    }
 }

@@ -6,63 +6,72 @@
 
 <div class="container">
     <h1 class="display-6 mt-3 mb-5 text-center">{% trans %}Last added Items{% endtrans %}</h1>
-<div class="last_item">
-    <div class="row align-items-md-stretch">
-        <div class="col-md-1 m-auto">
-            <nav>
-                <ul class="pagination paginations">
-                    {% if previous >= 0 %}
-                    <li class="page-item"><a class="page-link"
-                            href="{{ path('home', {  offset: previous }) }}">{% trans %}Previous{% endtrans %}</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
-        </div>
-        {% for item in items %}
-        <div class=" col-md-2 card mb-5 p-0 ms-4 shadow-sm" style="width: 14rem; min-width:163px">
-            <img src="{{ asset('images/items/') }}{{ item.imageItems }}" class="card-img-top h-50" alt="...">
-            
-            <div class="card-body">
-            <p class="ms-1" style="font-size: 12px;">#{{ item.id }}</p>
-                <p class="h5">{{ item.nameItem|length > 15 ? item.nameItem|slice(0, 15) ~ '...' : item.nameItem  }}</p>
-                <p>
-                    {% set comma = "," %}
-                    {% for tag in item.tagItem %}
-                        {% if tag != null %}
-                        {{ tag }}
-                            {% if loop.last != true %}
-                                {{ comma }}
-                            {% endif %}
+    <div class="last_item">
+        <div class="row align-items-md-stretch">
+            <div class="col-md-1 m-auto">
+                <nav>
+                    <ul class="pagination paginations">
+                        {% if previous >= 0 %}
+                        <li class="page-item"><a class="page-link"
+                                href="{{ path('home', {  offset: previous }) }}">{% trans %}Previous{% endtrans %}</a></li>
                         {% endif %}
-                    {% endfor %}
-                </p>
+                    </ul>
+                </nav>
+            </div>
+            {% for item in items %}
+            <div class=" col-md-2 card mb-5 p-0 ms-4 shadow-sm" style="width: 14rem; min-width:163px">
+                <img src="{{ asset('images/items/') }}{{ item.imageItems }}" class="card-img-top h-50" alt="...">
                 
+                <div class="card-body">
+                <p class="ms-1" style="font-size: 12px;">#{{ item.id }}</p>
+                    <p class="h5">{{ item.nameItem|length > 15 ? item.nameItem|slice(0, 15) ~ '...' : item.nameItem  }}</p>
+                    <p>
+                        {% set comma = "," %}
+                        {% for tag in item.tagItem %}
+                            {% if tag != null %}
+                            {{ tag }}
+                                {% if loop.last != true %}
+                                    {{ comma }}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </p>
+                    
+                </div>
+                <div class="d-flex justify-content-between">
+                <p class="ms-1" style="font-size: 12px;">{{ item.datecreateitem|date('Y-m-d H:m') }}</p>
+                <p class="me-3" style="font-size: 12px;"><img src="{{asset('images/items/like.png') }}" style="width: 20px;" class="me-3" >{{item.likeItems|length}}</p>
+                </div>
+                <a href="{{ path('item.view', { itemID: item.id }) }}"
+                    class="card-link text-center mb-1">{% trans %}VIEW{% endtrans %}
+                </a>
             </div>
-            <div class="d-flex justify-content-between">
-            <p class="ms-1" style="font-size: 12px;">{{ item.datecreateitem|date('Y-m-d H:m') }}</p>
-            <p class="me-3" style="font-size: 12px;"><img src="{{asset('images/items/like.png') }}" style="width: 20px;" class="me-3" >{{item.likeItems|length}}</p>
+            {% endfor %}
+            <div class="col-md-1 m-auto">
+                <nav>
+                    <ul class="pagination paginations">
+                        {% if next < items|length %}
+                        <li class="page-item"><a class="page-link ms-4"
+                                href="{{ path('home', {  offset: next }) }}">{% trans %}Next{% endtrans %}</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
             </div>
-            <a href="{{ path('item.view', { itemID: item.id }) }}"
-                class="card-link text-center mb-1">{% trans %}VIEW{% endtrans %}
-            </a>
-        </div>
-        {% endfor %}
-        <div class="col-md-1 m-auto">
-            <nav>
-                <ul class="pagination paginations">
-                    {% if next < items|length %}
-                    <li class="page-item"><a class="page-link ms-4"
-                            href="{{ path('home', {  offset: next }) }}">{% trans %}Next{% endtrans %}</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
         </div>
     </div>
-
-
-</div>
-
-
-
+    
+        {% for collection in collections %}
+            <div class="card ms-3" style="width: 14rem;">
+                <div class="card-header ">
+                    <strong class="d-flex text-primary justify-content-center"><a href="{{ path('collection.view', {collectionID: collection.id}) }}" style="text-decoration: none;">{{ collection.title }}</a></strong>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">{{ collection.category }}</h6>
+                    <p class="card-text">{{ collection.descriptions }}</p>
+                    
+                </div>
+                <a href="{{ path('collection.view', {collectionID: collection.id}) }}" class="card-link text-center mb-1">{% trans %}View{% endtrans %}</a>
+            </div>
+        {% endfor %}
 </div>
 {% endblock %}

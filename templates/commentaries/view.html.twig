@@ -25,7 +25,6 @@
     </tbody>
 </table>
 <div class="col-md-1 m-auto">
-
             <nav>
                 <ul class="pagination">
                     {% if previous >= 0 %}
@@ -34,7 +33,6 @@
                     {% endif %}
                 </ul>
             </nav>
-       
             <nav>
                 <ul class="pagination">
                     {% if next < comments|length %}
@@ -44,4 +42,5 @@
                 </ul>
             </nav>
         </div>
+
 {% endblock %}
