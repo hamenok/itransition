@@ -493,6 +493,18 @@
         <source>MESSAGE</source>
         <target>СООБЩЕНИЕ</target>
       </trans-unit>
+      <trans-unit id="W5bGuyW" resname="VIEW COLLECTION">
+        <source>VIEW COLLECTION</source>
+        <target>ПРОСМОТР КОЛЛЕКЦИИ</target>
+      </trans-unit>
+      <trans-unit id="YzJtHTk" resname="COLLECTION">
+        <source>COLLECTION</source>
+        <target>КОЛЛЕКЦИЯ</target>
+      </trans-unit>
+      <trans-unit id="3Mg5pAF" resname="View">
+        <source>View</source>
+        <target>Смотреть</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
