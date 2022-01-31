@@ -10,7 +10,7 @@
     <div class="row align-items-md-stretch">
         <div class="col-md-1 m-auto">
             <nav>
-                <ul class="pagination">
+                <ul class="pagination paginations">
                     {% if previous >= 0 %}
                     <li class="page-item"><a class="page-link"
                             href="{{ path('home', {  offset: previous }) }}">{% trans %}Previous{% endtrans %}</a></li>
@@ -49,7 +49,7 @@
         {% endfor %}
         <div class="col-md-1 m-auto">
             <nav>
-                <ul class="pagination">
+                <ul class="pagination paginations">
                     {% if next < items|length %}
                     <li class="page-item"><a class="page-link ms-4"
                             href="{{ path('home', {  offset: next }) }}">{% trans %}Next{% endtrans %}</a></li>

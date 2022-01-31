@@ -481,6 +481,18 @@
         <source>MY COLLECTION</source>
         <target>МОИ КОЛЛЕКЦИИ</target>
       </trans-unit>
+      <trans-unit id="GP62gHN" resname="MY COMMENTARIES">
+        <source>MY COMMENTARIES</source>
+        <target>МОИ КОММЕНТАРИИ</target>
+      </trans-unit>
+      <trans-unit id="F.mgpRK" resname="DATE">
+        <source>DATE</source>
+        <target>ДАТА</target>
+      </trans-unit>
+      <trans-unit id="sZTZIBj" resname="MESSAGE">
+        <source>MESSAGE</source>
+        <target>СООБЩЕНИЕ</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

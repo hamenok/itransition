@@ -67,10 +67,10 @@ jQuery(document).ready(function() {
         });
     }); 
 
-    $('body').on('click','.pagination', function(e){
+    $('body').on('click','.paginations', function(e){
        
         e.preventDefault();
-        $page = $('.pagination a').attr('href'); 
+        $page = $('.paginations a').attr('href'); 
         $.ajax({
             type: "POST",
             url: $page,

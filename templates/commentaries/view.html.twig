@@ -1,6 +1,6 @@
 {% extends 'profile/index.html.twig' %}
 
-{% block title %}MY COMMENTARIES{% endblock %}
+{% block title %}{% trans %}MY COMMENTARIES{% endtrans %}{% endblock %}
 
 {% block wrapper %}
 
@@ -8,9 +8,9 @@
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">ITEM</th>
-            <th scope="col">DATE</th>
-            <th scope="col">MESSAGE</th>
+            <th scope="col">{% trans %}ITEM{% endtrans %}</th>
+            <th scope="col">{% trans %}DATE{% endtrans %}</th>
+            <th scope="col">{% trans %}MESSAGE{% endtrans %}</th>
         </tr>
     </thead>
     <tbody>
@@ -24,4 +24,24 @@
     {% endfor %}
     </tbody>
 </table>
+<div class="col-md-1 m-auto">
+
+            <nav>
+                <ul class="pagination">
+                    {% if previous >= 0 %}
+                    <li class="page-item"><a class="page-link"
+                            href="{{ path('comment.view', {  offset: previous }) }}">{% trans %}Previous{% endtrans %}</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+       
+            <nav>
+                <ul class="pagination">
+                    {% if next < comments|length %}
+                    <li class="page-item"><a class="page-link ms-4"
+                            href="{{ path('comment.view', {  offset: next }) }}">{% trans %}Next{% endtrans %}</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
 {% endblock %}

@@ -25,8 +25,6 @@ class CommentariesController extends AbstractController
     #[Route('/{_locale<%app.supported_locales%>}/commentaries/{itemID}/{userID}', name: 'add.comment')]
     public function addComment(Request $request, $itemID, $userID): Response
     {
-       
-           // $user = $this->userRepository->getOne($userID);
             $comment = new Commentaries();
             $form = $this->createForm(CommentariesFormType::class, $comment);
             $form->handleRequest($request);
@@ -42,24 +40,31 @@ class CommentariesController extends AbstractController
                     $this->addFlash('error','Comment not added');   
                 }
             }
-           // $allmsg = $this->commentariesRepository->getCommentaries($itemID);
             return $this->redirectToRoute('item.view',[
                 'itemID' => $itemID
-                
             ]);
     }
 
     #[Route('/{_locale<%app.supported_locales%>}/profile/commentaries/', name: 'comment.view')]
-    public function viewComment(): Response
+    public function viewComment(Request $request, CommentariesRepository $commentariesRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
            $user = $this->getUser();
            
-           $comments = $this->commentariesRepository->getMyCommentaries($user->getId());
+         
             $titlePage = "MY COMMENTARIES";
+
+            $offset = max(0, $request->query->getInt('offset', 0));
+            $paginator = $commentariesRepository->getMyCommentaries($user->getId(),$offset);
+
+
+
             return $this->render('commentaries/view.html.twig',[
-                'comments' => $comments,
-                'titlePage' => $titlePage
-                
+                'controller_name' => 'CommentariesController',
+                'titlePage' => $titlePage,
+                'comments' => $paginator,
+                'previous' => $offset - CommentariesRepository::PAGINATOR_PER_PAGE,
+                'next' => min(count($paginator), $offset + CommentariesRepository::PAGINATOR_PER_PAGE)
             ]);
     }
 

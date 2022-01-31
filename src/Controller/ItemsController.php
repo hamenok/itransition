@@ -91,7 +91,6 @@ class ItemsController extends AbstractController
     #[Route('/{_locale<%app.supported_locales%>}/items/item/{itemID}', name: 'item.view')]
     public function viewItem($itemID): Response
     {
-        
         $items = $this->itemRepository->getItemAndAutor($itemID);
 
         $comment = new Commentaries();

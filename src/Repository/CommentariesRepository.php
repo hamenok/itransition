@@ -7,6 +7,7 @@ use App\Entity\Items;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * @method Commentaries|null find($id, $lockMode = null, $lockVersion = null)
@@ -16,6 +17,9 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CommentariesRepository extends ServiceEntityRepository
 {
+
+    public const PAGINATOR_PER_PAGE = 10;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Commentaries::class);
@@ -45,18 +49,20 @@ class CommentariesRepository extends ServiceEntityRepository
         return $query->getArrayResult();
     }
 
-    public function getMyCommentaries(int $userID): array
+    public function getMyCommentaries(int $userID, int $offset): Paginator
     {
         $query = $this->createQueryBuilder('c')
-        ->select('c.message, c.datecomment,
-                 i.nameItem, i.id as itemID')
+        ->addSelect('c.message, c.datecomment')
         ->join(User::class, 'u', 'with','c.userID=u.id')
+        ->addSelect('i.nameItem, i.id as itemID')
         ->join(Items::class, 'i', 'with','c.itemID=i.id')
         ->where('c.userID = :id') 
         ->setParameter('id', $userID)
+        ->setMaxResults(self::PAGINATOR_PER_PAGE)
+        ->setFirstResult($offset)
         ->getQuery();
 
-        return $query->getArrayResult();
+        return new Paginator($query);
     }
     
     public function getAll(): array
