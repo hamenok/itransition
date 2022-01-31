@@ -44,6 +44,20 @@ class CommentariesRepository extends ServiceEntityRepository
 
         return $query->getArrayResult();
     }
+
+    public function getMyCommentaries(int $userID): array
+    {
+        $query = $this->createQueryBuilder('c')
+        ->select('c.message, c.datecomment,
+                 i.nameItem, i.id as itemID')
+        ->join(User::class, 'u', 'with','c.userID=u.id')
+        ->join(Items::class, 'i', 'with','c.itemID=i.id')
+        ->where('c.userID = :id') 
+        ->setParameter('id', $userID)
+        ->getQuery();
+
+        return $query->getArrayResult();
+    }
     
     public function getAll(): array
     {

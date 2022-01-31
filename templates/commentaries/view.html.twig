@@ -1,0 +1,27 @@
+{% extends 'profile/index.html.twig' %}
+
+{% block title %}MY COMMENTARIES{% endblock %}
+
+{% block wrapper %}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">ITEM</th>
+            <th scope="col">DATE</th>
+            <th scope="col">MESSAGE</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for comment in comments %}
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td><a href="{{ path('item.view',{itemID: comment.itemID }) }}"> {{ comment.nameItem }} </a></td>
+            <td>{{ comment.datecomment|date('Y-m-d H-m')}}</td>
+            <td>{{ comment.message }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

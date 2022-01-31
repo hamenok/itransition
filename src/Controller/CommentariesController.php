@@ -47,10 +47,21 @@ class CommentariesController extends AbstractController
                 'itemID' => $itemID
                 
             ]);
-
-
-        // return $this->render('commentaries/index.html.twig', [
-        //     'controller_name' => 'CommentariesController',
-        // ]);
     }
+
+    #[Route('/{_locale<%app.supported_locales%>}/profile/commentaries/', name: 'comment.view')]
+    public function viewComment(): Response
+    {
+           $user = $this->getUser();
+           
+           $comments = $this->commentariesRepository->getMyCommentaries($user->getId());
+            $titlePage = "MY COMMENTARIES";
+            return $this->render('commentaries/view.html.twig',[
+                'comments' => $comments,
+                'titlePage' => $titlePage
+                
+            ]);
+    }
+
+    
 }
