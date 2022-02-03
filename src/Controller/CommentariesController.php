@@ -14,7 +14,6 @@ use App\Form\CommentariesFormType;
 
 class CommentariesController extends AbstractController
 {
-
     public function __construct(CommentariesRepository $commentariesRepository, UserRepository $userRepository, ItemsRepository $itemsRepository)
     {
         $this->commentariesRepository = $commentariesRepository;
