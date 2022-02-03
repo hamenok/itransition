@@ -57,10 +57,7 @@ class CommentariesController extends AbstractController
             $offset = max(0, $request->query->getInt('offset', 0));
             $paginator = $commentariesRepository->getMyCommentaries($user->getId(),$offset);
 
-
-
             return $this->render('commentaries/view.html.twig',[
-                'controller_name' => 'CommentariesController',
                 'titlePage' => $titlePage,
                 'comments' => $paginator,
                 'previous' => $offset - CommentariesRepository::PAGINATOR_PER_PAGE,

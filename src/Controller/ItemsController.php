@@ -37,7 +37,6 @@ class ItemsController extends AbstractController
         $items = $this->itemRepository->getAllMyItems($user->getId());
         $titlePage = 'MY ITEMS';
         return $this->render('items/index.html.twig', [
-            'controller_name' => 'ItemsController',
             'titlePage'=>$titlePage,
             'items'=>$items
         ]);
@@ -71,7 +70,6 @@ class ItemsController extends AbstractController
 
         $titlePage = 'ADD ITEMS';
         return $this->render('items/add.html.twig', [
-            'controller_name' => 'ItemsController',
             'titlePage'=>$titlePage,
             'addItemsForm' => $form->createView(),
         ]);
@@ -87,7 +85,6 @@ class ItemsController extends AbstractController
         $allmsg = $this->commentariesRepository->getCommentaries($itemID);
         $allLike = $this->likeItemRepository->getAllLike($itemID);
         return $this->render('items/view.html.twig', [
-            'controller_name' => 'ItemsController',
             'addComment' => $form->createView(),
             'items'=>$items,
             'allmsg' => $allmsg,

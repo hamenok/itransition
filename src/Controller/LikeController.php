@@ -23,7 +23,6 @@ class LikeController extends AbstractController
     #[Route('/{_locale<%app.supported_locales%>}/like/{itemID}/{userID}', name: 'like')]
     public function addLike($itemID, $userID): Response
     {
-
         $like = new LikeItem();
         $item = $this->itemsRepository->getOne($itemID);
         $user = $this->userRepository->getOne($userID);
@@ -32,12 +31,11 @@ class LikeController extends AbstractController
         {
             $this->likeItemRepository->addLike($like,$user, $item);
         } else {
-            $this->likeItemRepository->delLike($this->likeItemRepository->getOne($getLike[0]['id']));
+            $this->likeItemRepository->unLike($this->likeItemRepository->getOne($getLike[0]['id']));
         }
      
         return $this->redirectToRoute('item.view',[
             'itemID' => $itemID
-            
         ]);
     }
 

@@ -97,7 +97,7 @@ class ProfileController extends AbstractController
 
         return $this->render('profile/changepassword.html.twig', [
             'titlePage' => $titlePage,
-            'changepasswordform' => $form->createView(),
+            'changepasswordform' => $form->createView()
         ]);
     }
 

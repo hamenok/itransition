@@ -29,9 +29,8 @@ class LikeItemRepository extends ServiceEntityRepository
         $this->_em->flush();
     }
 
-    public function delLike(LikeItem $like)
+    public function unLike(LikeItem $like)
     {
-        
         $this->_em->remove($like);
         $this->_em->flush();
     }

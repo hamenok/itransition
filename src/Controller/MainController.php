@@ -38,7 +38,6 @@ class MainController extends AbstractController
         $collections = $this->itemCollectionsRepository->getAllCollection();
 
         return $this->render('main/index.html.twig', [
-            'controller_name' => 'MainController',
             'items' => $paginator,
             'previous' => $offset - ItemsRepository::PAGINATOR_PER_PAGE,
             'next' => min(count($paginator), $offset + ItemsRepository::PAGINATOR_PER_PAGE),

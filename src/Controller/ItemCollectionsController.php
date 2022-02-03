@@ -37,8 +37,6 @@ class ItemCollectionsController extends AbstractController
         $titlePage = "ADD COLLECTION";
 
         return $this->render('item_collections/add.html.twig', [
-            'controller_name' => 'ItemCollectionsController',
-            
             'addCollection' => $form->createView(),
             'titlePage' => $titlePage
         ]);
@@ -52,7 +50,6 @@ class ItemCollectionsController extends AbstractController
         $collections = $this->itemCollectionsRepository->getAllMyCollection($user->getId());
         $titlePage = 'MY COLLECTIONS';
         return $this->render('item_collections/view.html.twig', [
-            'controller_name' => 'ItemCollectionsController',
             'titlePage'=>$titlePage,
             'collections'=>$collections
         ]);
@@ -66,7 +63,6 @@ class ItemCollectionsController extends AbstractController
         $collection = $this->itemCollectionsRepository->getOne($collectionID);
         $titlePage = 'COLLECTION';
         return $this->render('item_collections/more_view.html.twig', [
-            'controller_name' => 'ItemCollectionsController',
             'titlePage'=>$titlePage,
             'collection'=>$collection
         ]);
