@@ -59,9 +59,8 @@
             </div>
         </div>
     </div>
-    
+    <div class="d-flex justify-content-center">
         {% for collection in collections %}
-        <div class="d-flex justify-content-center">
             <div class="card ms-3" style="width: 14rem;">
                 <div class="card-header ">
                     <strong class="d-flex text-primary justify-content-center"><a href="{{ path('collection.view', {collectionID: collection.id}) }}" style="text-decoration: none;">{{ collection.title }}</a></strong>
@@ -69,22 +68,10 @@
                 <div class="card-body">
                     <h6 class="card-subtitle mb-2 text-muted">{{ collection.category }}</h6>
                     <p class="card-text">{{ collection.descriptions }}</p>
-                    
                 </div>
-                <a href="{{ path('collection.view', {collectionID: collection.id}) }}" class="card-link text-center mb-1">{% trans %}View{% endtrans %}</a>
-            </div>
-            <div class="card ms-3" style="width: 14rem;">
-                <div class="card-header ">
-                    <strong class="d-flex text-primary justify-content-center"><a href="{{ path('collection.view', {collectionID: collection.id}) }}" style="text-decoration: none;">{{ collection.title }}</a></strong>
-                </div>
-                <div class="card-body">
-                    <h6 class="card-subtitle mb-2 text-muted">{{ collection.category }}</h6>
-                    <p class="card-text">{{ collection.descriptions }}</p>
-                    
-                </div>
-                <a href="{{ path('collection.view', {collectionID: collection.id}) }}" class="card-link text-center mb-1">{% trans %}View{% endtrans %}</a>
-            </div>
+                <a href="{{ path('collection.view', {collectionID: collection.id}) }}" class="card-link text-center mb-1">{% trans %}VIEW{% endtrans %}</a>
             </div>
         {% endfor %}
+    </div>
 </div>
 {% endblock %}

@@ -37,10 +37,14 @@ class Items
     #[ORM\OneToMany(mappedBy: 'itemID', targetEntity: LikeItem::class)]
     private $likeItems;
 
+    #[ORM\OneToMany(mappedBy: 'itemID', targetEntity: CollectionsFull::class)]
+    private $collectionsfullID;
+
     public function __construct()
     {
         $this->commentID = new ArrayCollection();
         $this->likeItems = new ArrayCollection();
+        $this->collectionsfullID = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -189,6 +193,36 @@ class Items
             // set the owning side to null (unless already changed)
             if ($likeItem->getItemID() === $this) {
                 $likeItem->setItemID(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CollectionsFull[]
+     */
+    public function getCollectionsfullID(): Collection
+    {
+        return $this->collectionsfullID;
+    }
+
+    public function addCollectionsfullID(CollectionsFull $collectionsfullID): self
+    {
+        if (!$this->collectionsfullID->contains($collectionsfullID)) {
+            $this->collectionsfullID[] = $collectionsfullID;
+            $collectionsfullID->setItemID($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCollectionsfullID(CollectionsFull $collectionsfullID): self
+    {
+        if ($this->collectionsfullID->removeElement($collectionsfullID)) {
+            // set the owning side to null (unless already changed)
+            if ($collectionsfullID->getItemID() === $this) {
+                $collectionsfullID->setItemID(null);
             }
         }
 

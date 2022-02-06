@@ -6,17 +6,22 @@
 <div class="modal fade" id="modal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">{% trans %}Add to Collection{% endtrans %}</h5>
+            <div class="modal-header" url="{{ path('items') }}">
+                <h5 class="modal-title">{% trans %}CHOOSE A COLLECTION{% endtrans %}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            {{ form_start(addCollectionsFull) }}
+   
+                <div class="modal-body">
+                    <p>{{ form_widget(addCollectionsFull.collectionID) }}</p>
+                    <input type="hidden" name="userID" value="{{ app.user.id }}">
+                    <input type="hidden" name="itemID" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE</button>
+                    {{ form_widget(addCollectionsFull.add, {attr:{class:'btn btn-primary'}})}}
+                </div>
+            {{ form_end(addCollectionsFull) }}
         </div>
     </div>
 </div>
@@ -47,7 +52,7 @@
             <circle cx="12" cy="12" r="3"></circle>
         </svg>
     </a>
-    <a href="{{ item.id }}" class="btn btn-outline-secondary mb-2 " data-bs-toggle="modal" data-bs-target="#modal">
+    <a href="{{ item.id }}" class="btn btn-outline-secondary mb-2" name="add_to_collection" data-bs-toggle="modal" data-bs-target="#modal">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle">
             <circle cx="12" cy="12" r="10"></circle>

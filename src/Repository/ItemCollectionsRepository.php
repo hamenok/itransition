@@ -68,9 +68,9 @@ class ItemCollectionsRepository extends ServiceEntityRepository
         return $query->getArrayResult();
     }
 
-    public function getOneId(int $cillectionID): object
+    public function getOneId(int $collectionID): object
     {
-        return parent::find($cillectionID);
+        return parent::find($collectionID);
     }
 
     Public function removeItems(ItemCollections $itemCollections)

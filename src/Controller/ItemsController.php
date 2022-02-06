@@ -14,31 +14,55 @@ use App\Service\FileManagerServiceInterface;
 use App\Repository\CommentariesRepository;
 use App\Entity\Commentaries;
 use App\Form\CommentariesFormType;
+use App\Entity\CollectionsFull;
+use App\Form\CollectionsFullFormType;
+use App\Repository\CollectionsFullRepository;
 use App\Repository\LikeItemRepository;
+use App\Repository\ItemCollectionsRepository;
 class ItemsController extends AbstractController
 {
 
     private $userRepository;
 
-    public function __construct(UserRepository $userRepository, ItemsRepository $itemRepository, CommentariesRepository $commentariesRepository, LikeItemRepository $likeItemRepository)
+    public function __construct(UserRepository $userRepository, ItemsRepository $itemRepository, 
+                                CommentariesRepository $commentariesRepository, LikeItemRepository $likeItemRepository, 
+                                CollectionsFullRepository $collectionsFullRepository, ItemCollectionsRepository $itemCollectionsRepository)
     {
         $this->userRepository = $userRepository;
         $this->itemRepository = $itemRepository;
         $this->commentariesRepository = $commentariesRepository;
         $this->likeItemRepository = $likeItemRepository;
+        $this->collectionsFullRepository = $collectionsFullRepository;
+        $this->itemCollectionsRepository = $itemCollectionsRepository;
     }
 
     #[Route('/{_locale<%app.supported_locales%>}/items', name: 'items')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
         $user = $this->getUser();
+        $collectionsFull = new CollectionsFull();
+        $form = $this->createForm(CollectionsFullFormType::class, $collectionsFull);
+        $form->handleRequest($request);
+       
+        $userID = $this->userRepository->getOne($user->getId());
         
+        
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
+        
+            $itemID = $this->itemRepository->getOne($request->get('itemID'));
+        $collectionsFull->setCollectionID($form->get('collectionID')->getData());
+        $collectionsFull->setUserID($userID);
+        $collectionsFull->setItemID($itemID);
+        $this->collectionsFullRepository->setCreateCollection($collectionsFull);
+        }
         $items = $this->itemRepository->getAllMyItems($user->getId());
         $titlePage = 'MY ITEMS';
         return $this->render('items/index.html.twig', [
             'titlePage'=>$titlePage,
-            'items'=>$items
+            'items'=>$items,
+            'addCollectionsFull' => $form->createView()
         ]);
     }
 
@@ -71,7 +95,7 @@ class ItemsController extends AbstractController
         $titlePage = 'ADD ITEMS';
         return $this->render('items/add.html.twig', [
             'titlePage'=>$titlePage,
-            'addItemsForm' => $form->createView(),
+            'addItemsForm' => $form->createView()
         ]);
     }
 

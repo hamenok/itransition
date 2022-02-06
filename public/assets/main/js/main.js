@@ -82,14 +82,14 @@ jQuery(document).ready(function() {
                 console.log(response);
             }
         
+        });
     });
-            
-            
-        
     
-});
-    
-    
+    $('[name=add_to_collection]').on('click', function(e) {
+        e.preventDefault();
+        $('[name=itemID]').attr('value', $(this).attr('href'));
+      
+    });
 
 
 
